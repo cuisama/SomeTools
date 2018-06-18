@@ -13,7 +13,7 @@ namespace ReAVName
     class Program 
     {
         private static bool DB = true;
-        private static string MODE = "MUL1";
+        private static string MODE = "MUL";
         private static string Extension = ".mp4.avi.rmvb.mov.mpeg.wmv.flv.mkv.rm";
 
         static void Main(string[] args)
@@ -28,7 +28,7 @@ namespace ReAVName
                 path = Directory.GetCurrentDirectory();
             }
             if (MODE.Equals("MUL")) {
-                string[] paths = { "D:\\temp", "E:\\temp", "F:\\temp", "G:\\temp", "H:\\temp", "I:\\temp" };
+                string[] paths = { "D:\\temp", "G:\\tempm", "H:\\temp", "J:\\temp" };
                 for(int i=0;i<paths.Length;i++)
                 {
                     Exec(paths[i]);
@@ -134,7 +134,8 @@ namespace ReAVName
             {
                 video.Category += new Regex(">.*<").Match(m.Value).Value.Replace(">", "").Replace("<", "") + " ";
             }
-            video.Director = new Regex("text.*<").Match(director).Value.Replace(">", "").Replace("<", "").Replace("text\"", "");
+            //video.Director = new Regex("text.*<").Match(director).Value.Replace(">", "").Replace("<", "").Replace("text\"", "");
+            video.Director = new Regex(">.*<").Match(actor).Value.Replace(">", "").Replace("<", "");
             video.Maker = new Regex(">.*<").Match(maker).Value.Replace(">", "").Replace("<", "");
             video.Publisher = new Regex(">.*<").Match(publisher).Value.Replace(">", "").Replace("<", "");
             video.Image = new Regex("src=\".*?\"").Match(image).Value.Replace("src=", "").Replace("\"", "");
@@ -173,10 +174,11 @@ namespace ReAVName
             catch (Exception ex)
             {
                 //throw;
-                if(con != null)
+                if(!ex.Message.Contains("PK_WORKSET") && con != null)
                 {
                     con.Close();
                     con.Dispose();
+                    con = null;
                 }
             }
             return ret;
@@ -188,7 +190,7 @@ namespace ReAVName
             {
                 string connectionString;
                 connectionString = String.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3};Integrated Security=false;",
-                                                        "8LB11L2-PC\\SQLEXPRESS", "ENTSVR", "entsvr", "ncrsa_ora");
+                                                        "LAPTOP-R9PBI4EC\\SQLEXPRESS", "ENTSVR", "sa", "ncrsa_ora");
                 con = new SqlConnection(connectionString);
                 con.Open();
             }
@@ -205,7 +207,7 @@ namespace ReAVName
         private static string pIssueDate = "video_date(.|\n)*?text.*<";
         private static string pDuration = "video_length(.|\n)*?text.*<";
         private static string pCategory = "category tag.*?</a>";
-        private static string pDirector = "video_director(.|\n)*?text.*<";
+        private static string pDirector = "vl_director\\.php\\?d=.*?<";//"video_director(.|\n)*?text.*<";
         private static string pMaker = "vl_maker\\.php\\?m=.*?<";
         private static string pPublisher = "vl_label\\.php\\?l=.*?<";
         private static string pImage = "video_jacket_img.*?width=";

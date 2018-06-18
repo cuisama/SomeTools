@@ -1,4 +1,6 @@
-﻿CREATE TABLE [dbo].[WORKSET](
+﻿USE ENTSVR;
+GO
+CREATE TABLE [dbo].[WORKSET](
 	Number [varchar](10) NOT NULL,
 	Actor [varchar](20) NULL,
 	Name [varchar](200) NULL,
