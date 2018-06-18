@@ -10,9 +10,11 @@ using System.Threading.Tasks;
 
 namespace ReAVName
 {
-    class Program
+    class Program 
     {
         private static bool DB = true;
+        private static string MODE = "MUL1";
+        private static string Extension = ".mp4.avi.rmvb.mov.mpeg.wmv.flv.mkv.rm";
 
         static void Main(string[] args)
         {
@@ -25,7 +27,23 @@ namespace ReAVName
             {
                 path = Directory.GetCurrentDirectory();
             }
-            
+            if (MODE.Equals("MUL")) {
+                string[] paths = { "D:\\temp", "E:\\temp", "F:\\temp", "G:\\temp", "H:\\temp", "I:\\temp" };
+                for(int i=0;i<paths.Length;i++)
+                {
+                    Exec(paths[i]);
+                }
+            }
+            else
+            {
+                Exec(path);
+            }
+
+            Console.WriteLine("end");
+            Console.ReadLine();
+        }
+        private static void Exec(String path)
+        {
             string[] files = Directory.GetFiles(path, "*.*");
             Regex rgx = new Regex(pNum);
             string code = "";
@@ -36,6 +54,10 @@ namespace ReAVName
             {
                 Console.WriteLine(i);
                 NG = false;
+
+                FileInfo file = new FileInfo(files[i]);
+                if(!Extension.Contains(file.Extension.ToLower())) continue;
+
                 code = rgx.Match(files[i]).Value;
                 if (!string.IsNullOrEmpty(code))
                 {
@@ -45,36 +67,33 @@ namespace ReAVName
                     try
                     {
                         Video v = GetInfo(code);
-                        if(v != null)
+                        if (v != null)
                         {
                             title = v.Name;
-                            FileInfo file = new FileInfo(files[i]);
                             string sNewDirectory = Path.Combine(file.DirectoryName, "【" + title + file.Extension);
                             Console.WriteLine(sNewDirectory);
                             //Directory.Move(files[i], sNewDirectory);
                         }
 
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         if (--retryCount > 0) goto Retry;
                         msg = ex.Message;
                         NG = true;
                     }
-                    
+
                 }
                 else
                 {
                     NG = true;
                 }
 
-                if(NG == true)
+                if (NG == true)
                 {
                     Console.WriteLine(files[i] + "    " + msg);
                 }
             }
-            Console.WriteLine("end");
-            Console.ReadLine();
         }
 
         private static Video GetInfo(string code)
