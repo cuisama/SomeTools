@@ -44,9 +44,10 @@ function exec(url){
 	}
 
 	key = decodeURIComponent(key);
-	if(!key)return;
-	var time = new Date().toLocaleString();
-
+	if (!key) return;
+	var date = new Date();
+	//var time = .toLocaleString();
+	var time = 1900 + date.getYear() + "/" + (date.getMonth() + 1) + "/" + (date.getDay() + 1) + " " + (date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds();
 	var current = {
 		time:time,
 		key:key

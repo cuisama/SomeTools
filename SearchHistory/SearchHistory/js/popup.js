@@ -10,8 +10,10 @@ createTable();
 
 
 function setSelect(){
-	var html = "";
-	var today = today || new Date().toLocaleString().match(/\d{4}\/\d{1,2}\/\d{1,2}/)[0];
+    var html = "";
+    var date = new Date();
+    var today = 1900 + date.getYear() + "/" + (date.getMonth() + 1) + "/" + (date.getDay() + 1);
+	//var today = today || new Date().toLocaleString().match(/\d{4}\/\d{1,2}\/\d{1,2}/)[0];
 	var searchHistory = bg.searchHistory;
 	searchHistory[today] = searchHistory[today]||{};
 	
