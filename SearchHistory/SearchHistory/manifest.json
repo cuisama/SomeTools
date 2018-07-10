@@ -1,7 +1,7 @@
 {
 	"manifest_version":2,
 	"name":"SearchHistory(搜索记录)",
-	"version":"1.0.4",
+	"version":"1.0.5",
 	"description":"记录您在众多搜索引擎的搜索历史",
 	"icons":
 	{
