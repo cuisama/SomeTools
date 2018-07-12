@@ -17,6 +17,55 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
 });
 
+var sync = chrome.contextMenus.create({
+    type: 'normal',
+    title: 'sync',
+    contexts: ['browser_action'],
+});
+
+var download = chrome.contextMenus.create({
+    type: 'normal',
+    title: 'download',
+    contexts: ['browser_action'],
+    onclick: function () {
+        chrome.storage.sync.get({ "searchHistory": {} }, function (item) {
+            for(var date in item.searchHistory){
+                if(searchHistory[date]){
+                    for(var key in item.searchHistory[date]){
+                        searchHistory[date][key] = item.searchHistory[date][key];
+                    }
+                }else{
+                    searchHistory[date] = item.searchHistory[date];
+                }
+            }
+        });
+    },
+    parentId: sync
+});
+var upload = chrome.contextMenus.create({
+    type: 'normal',
+    title: 'upload',
+    contexts: ['browser_action'],
+    onclick: function () {
+        var temp = {};
+        chrome.storage.local.get({ "searchHistory": {} }, function (item) {
+            temp = item.searchHistory;
+            chrome.storage.sync.get({ "searchHistory": {} }, function (item) {
+                for (var date in item.searchHistory) {
+                    if (temp[date]) {
+                        for (var key in item.searchHistory[date]) {
+                            temp[date][key] = item.searchHistory[date][key];
+                        }
+                    } else {
+                        temp[date] = item.searchHistory[date];
+                    }
+                }
+                chrome.storage.sync.set({ "searchHistory": temp });
+            });
+        });
+    },
+    parentId: sync
+});
 
 function exec(url) {
     var key = url;
