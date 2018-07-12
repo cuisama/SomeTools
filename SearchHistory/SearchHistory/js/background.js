@@ -1,4 +1,4 @@
-var searchHistory = undefined;
+﻿var searchHistory = undefined;
 chrome.storage.local.get({ "searchHistory": {} }, function (item) {
     searchHistory = item.searchHistory;
 });
@@ -19,53 +19,95 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
 var sync = chrome.contextMenus.create({
     type: 'normal',
-    title: 'sync',
+    title: 'sync（同步）',
     contexts: ['browser_action'],
 });
 
-var download = chrome.contextMenus.create({
+chrome.contextMenus.create({
     type: 'normal',
-    title: 'download',
+    title: 'Increase Download（增量下载）',
     contexts: ['browser_action'],
-    onclick: function () {
+    onclick: increaseDownload,
+    parentId: sync
+});
+chrome.contextMenus.create({
+    type: 'normal',
+    title: 'Increase Upload（增量上传）',
+    contexts: ['browser_action'],
+    onclick: increaseUpload,
+    parentId: sync
+});
+chrome.contextMenus.create({
+    type: 'separator',
+    contexts: ['browser_action'],
+    parentId: sync
+});
+chrome.contextMenus.create({
+    type: 'normal',
+    title: 'Replace Download（替换下载）',
+    contexts: ['browser_action'],
+    onclick: replaceDownload,
+    parentId: sync
+});
+chrome.contextMenus.create({
+    type: 'normal',
+    title: 'Replace Upload（替换上传）',
+    contexts: ['browser_action'],
+    onclick: replaceUpload,
+    parentId: sync
+});
+
+function increaseDownload() {
+    chrome.storage.sync.get({ "searchHistory": {} }, function (item) {
+        for (var date in item.searchHistory) {
+            if (searchHistory[date]) {
+                for (var key in item.searchHistory[date]) {
+                    searchHistory[date][key] = item.searchHistory[date][key];
+                }
+            } else {
+                searchHistory[date] = item.searchHistory[date];
+            }
+        }
+        show("finish");
+    });
+}
+
+function increaseUpload() {
+    var temp = {};
+    chrome.storage.local.get({ "searchHistory": {} }, function (item) {
+        temp = item.searchHistory;
         chrome.storage.sync.get({ "searchHistory": {} }, function (item) {
-            for(var date in item.searchHistory){
-                if(searchHistory[date]){
-                    for(var key in item.searchHistory[date]){
-                        searchHistory[date][key] = item.searchHistory[date][key];
+            for (var date in item.searchHistory) {
+                if (temp[date]) {
+                    for (var key in item.searchHistory[date]) {
+                        temp[date][key] = item.searchHistory[date][key];
                     }
-                }else{
-                    searchHistory[date] = item.searchHistory[date];
+                } else {
+                    temp[date] = item.searchHistory[date];
                 }
             }
+            chrome.storage.sync.set({ "searchHistory": temp });
+            show("success");
         });
-    },
-    parentId: sync
-});
-var upload = chrome.contextMenus.create({
-    type: 'normal',
-    title: 'upload',
-    contexts: ['browser_action'],
-    onclick: function () {
-        var temp = {};
-        chrome.storage.local.get({ "searchHistory": {} }, function (item) {
-            temp = item.searchHistory;
-            chrome.storage.sync.get({ "searchHistory": {} }, function (item) {
-                for (var date in item.searchHistory) {
-                    if (temp[date]) {
-                        for (var key in item.searchHistory[date]) {
-                            temp[date][key] = item.searchHistory[date][key];
-                        }
-                    } else {
-                        temp[date] = item.searchHistory[date];
-                    }
-                }
-                chrome.storage.sync.set({ "searchHistory": temp });
-            });
-        });
-    },
-    parentId: sync
-});
+    });
+}
+
+function replaceDownload() {
+    chrome.storage.sync.get({ "searchHistory": {} }, function (item) {
+        searchHistory = item.searchHistory;
+        show("finish");
+    });
+}
+
+function replaceUpload() {
+    chrome.storage.sync.set({ "searchHistory": searchHistory }, function () {
+        show("success");
+    });
+}
+
+function show(msg) {
+    alert(msg);
+}
 
 function exec(url) {
     var key = url;
