@@ -19,20 +19,20 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
 var sync = chrome.contextMenus.create({
     type: 'normal',
-    title: 'sync（同步）',
+    title: RM("sync"),
     contexts: ['browser_action'],
 });
 
 chrome.contextMenus.create({
     type: 'normal',
-    title: 'Increase Download（增量下载）',
+    title: RM("incDown"),
     contexts: ['browser_action'],
     onclick: increaseDownload,
     parentId: sync
 });
 chrome.contextMenus.create({
     type: 'normal',
-    title: 'Increase Upload（增量上传）',
+    title: RM("incUp"),
     contexts: ['browser_action'],
     onclick: increaseUpload,
     parentId: sync
@@ -44,19 +44,71 @@ chrome.contextMenus.create({
 });
 chrome.contextMenus.create({
     type: 'normal',
-    title: 'Replace Download（替换下载）',
+    title: RM("repDown"),
     contexts: ['browser_action'],
     onclick: replaceDownload,
     parentId: sync
 });
 chrome.contextMenus.create({
     type: 'normal',
-    title: 'Replace Upload（替换上传）',
+    title: RM("repUp"),
     contexts: ['browser_action'],
     onclick: replaceUpload,
     parentId: sync
 });
 
+var other = chrome.contextMenus.create({
+    type: 'normal',
+    title: RM("other"),
+    contexts: ['browser_action'],
+});
+chrome.contextMenus.create({
+    type: 'normal',
+    title: RM("formatData"),
+    contexts: ['browser_action'],
+    onclick: formatData,
+    parentId: other
+});
+
+function formatData() {
+    var temp = {};
+    for (var date in searchHistory) {
+        var v = date.split('/');
+        var nDate = v[0] + "/" + pf(v[1], 2, '0') + "/" + pf(v[2], 2, '0');
+        temp[nDate] = temp[nDate] || {};
+        for (var key in searchHistory[date]) {
+            var s = searchHistory[date][key].split(':');
+            temp[nDate][key] = pf(s[0], 2, '0') + ":" + pf(s[1], 2, '0') + ":" + pf(s[2], 2, '0');
+        }
+    }
+    searchHistory = objKeySort(temp);
+}
+
+function objKeySort(obj) {
+    var newkey = Object.keys(obj).sort();
+    var newObj = {};
+    for (var i = 0; i < newkey.length; i++) {
+        if (obj[newkey[i]] instanceof Object) {
+            newObj[newkey[i]] = objKeySort(obj[newkey[i]]);
+        }else{
+            newObj[newkey[i]] = obj[newkey[i]];
+        }
+    }
+    return newObj;
+}
+
+function pf(str, l, c) {
+    return (new Array(l + 1).join(c) + str).slice(-2);
+}
+function getTime() {
+    var date = new Date();
+    return 1900 + date.getYear() + "/" 
+        + pf(date.getMonth() + 1, 2, '0') + "/" 
+        + pf(date.getDate(), 2, '0') + " " 
+        + pf(date.getHours(), 2, '0') + ":" 
+        + pf(date.getMinutes(), 2, '0') + ":" 
+        + pf(date.getSeconds(), 2, '0');
+}
 function increaseDownload() {
     chrome.storage.sync.get({ "searchHistory": {} }, function (item) {
         for (var date in item.searchHistory) {
@@ -68,7 +120,7 @@ function increaseDownload() {
                 searchHistory[date] = item.searchHistory[date];
             }
         }
-        show("finish");
+        show(RM("finish"));
     });
 }
 
@@ -87,7 +139,7 @@ function increaseUpload() {
                 }
             }
             chrome.storage.sync.set({ "searchHistory": temp });
-            show("success");
+            show(RM("success"));
         });
     });
 }
@@ -95,13 +147,13 @@ function increaseUpload() {
 function replaceDownload() {
     chrome.storage.sync.get({ "searchHistory": {} }, function (item) {
         searchHistory = item.searchHistory;
-        show("finish");
+        show(RM("finish"));
     });
 }
 
 function replaceUpload() {
     chrome.storage.sync.set({ "searchHistory": searchHistory }, function () {
-        show("success");
+        show(RM("success"));
     });
 }
 
@@ -136,12 +188,14 @@ function exec(url) {
 
     key = decodeURIComponent(key);
     if (!key) return;
-    var date = new Date();
-    //var time = .toLocaleString();
-    var time = 1900 + date.getYear() + "/" + (date.getMonth() + 1) + "/" + (date.getDate()) + " " + (date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds();
+    var time = getTime();
     var current = {
         time: time,
         key: key
     };
     return current;
+}
+
+function RM(key) {
+    return chrome.i18n.getMessage(key);
 }

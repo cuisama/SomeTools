@@ -1,0 +1,35 @@
+﻿{
+  "title": { "message": "Search Engine Query History" },
+
+  "description": { "message": "Record your search history across many search engines" },
+
+  "sync": { "message": "Synchronize" },
+
+  "incDown": { "message": "Incremental Download" },
+
+  "incUp": { "message": "Incremental Upload" },
+
+  "repDown": { "message": "Replacement Download" },
+
+  "repUp": { "message": "Replace Upload" },
+
+  "other": { "message": "Other" },
+
+  "formatData": { "message": "Formatted Data" },
+
+  "finish": { "message": "Operation Completed" },
+
+  "success": { "message": "Successful Operation" },
+
+  "delete": { "message": "Delete" },
+
+  "time": { "message": "Time" },
+
+  "key": { "message": "Keyword" },
+
+  "option": { "message": "Operating" },
+
+  "refresh": { "message": "Refresh" },
+
+  "all": { "message": "All"}
+}

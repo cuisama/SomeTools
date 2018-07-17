@@ -1,0 +1,48 @@
+﻿body{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 12px;
+}
+table
+{
+    width: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    text-align: left;
+}
+table td, table th
+{
+    border: 1px solid #cad9ea;
+    color: #666;
+    height: 20px;
+    min-width:35px;
+}
+table thead th
+{
+    background-color: #CCE8EB;
+}
+table tr:nth-child(odd)
+{
+    background: #fff;
+}
+table tr:nth-child(even)
+{
+    background: #F5FAFA;
+}
+
+
+.btn a   
+{  
+    text-decoration:none;  
+    background:#3686f3;
+    color:#f2f2f2;  
+      
+    padding: 5px 30px 5px 30px;  
+    font-size:16px;   
+    font-weight:bold;  
+    border-radius:3px;  
+       
+    transition:all linear 0.30s;  
+      
+}  
+.btn a:hover { background:#385f9e; }  

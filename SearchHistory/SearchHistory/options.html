@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="css/common.css" type="text/css"/>
+    <style type="text/css">
+        body {
+            width:860px;
+            height:400px;
+            background-color: #f5f5f5;
+        }
+        div {
+            float: left;
+        }
+
+        #tableDiv{
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        table td, table th{
+            padding-left: 5px;
+            padding-right: 5px;
+            height:27px;
+        }
+
+        #selector {
+            width: 200px;
+            margin-top: 1px;
+            margin-left: 2px;
+        }
+        #refresh{
+            margin-left: 20px;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div style="width:800px;">
+        <div>
+            <select id="selector"></select>
+        </div>
+        <div id="refresh" class="btn">
+            <a href="#">Refresh</a>
+        </div>
+    </div>
+    <div id="tableDiv">
+        <table>
+            <thead id="searchHistory_thead"><tr><th>time</th><th>key</th><th>ope</th></tr></thead>
+            <tbody id="searchHistory_tbody"></tbody>
+        </table>
+    </div>
+</body>
+<script type="text/javascript" src="js/options.js"></script>
+</html>

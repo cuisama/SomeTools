@@ -1,15 +1,14 @@
-
-var bg = chrome.extension.getBackgroundPage();
+﻿var bg = chrome.extension.getBackgroundPage();
 var $tbody = document.getElementById("searchHistory_tbody");
 var $thead = document.getElementById("searchHistory_thead");
 $thead.innerHTML = "<tr><th>" + bg.RM("time") + "</th><th>" + bg.RM("key") + "</th><th>" + bg.RM("option") + "</th></tr>";
 var $refresh = document.getElementById("refresh").getElementsByTagName("a")[0];
 $refresh.innerHTML = bg.RM("refresh");
 
-    
 document.getElementById("refresh").onclick = function () {
     createTable();
 }
+
 setSelect();
 createTable();
 
@@ -23,6 +22,7 @@ function setSelect() {
     for (var key in searchHistory) {
         html = "<option value ='" + key + "'>" + key + "</option>" + html;
     }
+    html = "<option value ='All'>" + bg.RM("all") + "</option>" + html;
     var mySelect = document.getElementById("selector");
     mySelect.innerHTML = html;
     mySelect.onchange = function () {
@@ -40,9 +40,22 @@ function createTable() {
     var today = myselect.options[index].value;
 
     var searchHistory = bg.searchHistory;
-    for (var key in searchHistory[today]) {
-        html += "<tr id='" + key + "'><td>" + searchHistory[today][key] + "</td><td>" + key + "</td><td><a href='#'>"+bg.RM("delete")+"</a></td></tr>";
+    
+    if (today == "All") {
+        for (var date in searchHistory) {
+            var dayHtml = "";
+            for (var key in searchHistory[date]) {
+                dayHtml += "<tr id='" + key + "'><td>" + date + " " + searchHistory[date][key] + "</td><td>" + key + "</td><td><a href='#'>" + bg.RM("delete") + "</a></td></tr>";
+            }
+            html = dayHtml + html;
+        }
+    } else {
+        for (var key in searchHistory[today]) {
+            html += "<tr id='" + key + "'><td>" + today + " " + searchHistory[today][key] + "</td><td>" + key + "</td><td><a href='#'>" + bg.RM("delete") + "</a></td></tr>";
+        }
     }
+
+    
 
     $tbody.innerHTML = html;
 

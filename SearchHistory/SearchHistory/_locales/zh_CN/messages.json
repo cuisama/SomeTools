@@ -1,0 +1,35 @@
+﻿{
+  "title": { "message": "搜索引擎查询历史" },
+
+  "description": { "message": "记录您在众多搜索引擎的搜索历史" },
+
+  "sync": { "message": "同步" },
+
+  "incDown": { "message": "增量下载" },
+
+  "incUp": { "message": "增量上传" },
+
+  "repDown": { "message": "替换下载" },
+
+  "repUp": { "message": "替换上传" },
+
+  "other": { "message": "其他" },
+
+  "formatData": { "message": "格式化数据" },
+
+  "finish": { "message": "操作完成" },
+
+  "success": { "message": "操作成功" },
+
+  "delete": { "message": "删除" },
+
+  "time": { "message": "时间" },
+
+  "key": { "message": "关键字" },
+
+  "option": { "message": "操作" },
+
+  "refresh": { "message": "刷新" },
+
+  "all": { "message": "全部"}
+}

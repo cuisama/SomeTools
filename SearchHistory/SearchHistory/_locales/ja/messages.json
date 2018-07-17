@@ -1,0 +1,35 @@
+﻿{
+  "title": { "message": "検索エンジンのクエリ履歴" },
+
+  "description": { "message": "多くの検索エンジンで検索履歴を記録する" },
+
+  "sync": { "message": "同期" },
+
+  "incDown": { "message": "インクリメンタルダウンロード" },
+
+  "incUp": { "message": "インクリメンタルアップロード" },
+
+  "repDown": { "message": "代替ダウンロード" },
+
+  "repUp": { "message": "アップロードを置き換える" },
+
+  "other": { "message": "その他" },
+
+  "formatData": { "message": "フォーマットされたデータ" },
+
+  "finish": { "message": "操作が完了しました" },
+
+  "success": { "message": "成功した操作" },
+
+  "delete": { "message": "削除" },
+
+  "time": { "message": "時間" },
+
+  "key": { "message": "キーワード" },
+
+  "option": { "message": "操作" },
+
+  "refresh": { "message": "リフレッシュ" },
+
+  "all": { "message": "すべて"}
+}
