@@ -13,7 +13,7 @@
 
   "repUp": { "message": "替换上传" },
 
-  "other": { "message": "其他" },
+  "other": { "message": "辅助" },
 
   "formatData": { "message": "格式化数据" },
 
@@ -30,6 +30,10 @@
   "option": { "message": "操作" },
 
   "refresh": { "message": "刷新" },
+
+  "backup": { "message": "备份到本地" },
+  
+  "bakSucc": {"message": "[SearchHistoryBak.txt] 已下载到本地!"},
 
   "all": { "message": "全部"}
 }

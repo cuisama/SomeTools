@@ -59,6 +59,7 @@
     <Content Include="SearchHistory\img\icon.png" />
     <Content Include="SearchHistory\js\background.js" />
     <Content Include="SearchHistory\js\content-script.js" />
+    <Content Include="SearchHistory\js\fileSaver.js" />
     <Content Include="SearchHistory\js\options.js" />
     <Content Include="SearchHistory\js\popup.js" />
     <Content Include="SearchHistory\options.html" />

@@ -31,5 +31,9 @@
 
   "refresh": { "message": "Refresh" },
 
-  "all": { "message": "All"}
+  "backup": { "message": "Backup" },
+
+  "bakSucc": { "message": "[SearchHistoryBak.txt] Downloaded to local!" },
+
+  "all": { "message": "All" }
 }

@@ -82,6 +82,7 @@ function formatData() {
         }
     }
     searchHistory = objKeySort(temp);
+    show(RM("finish"));
 }
 
 function objKeySort(obj) {

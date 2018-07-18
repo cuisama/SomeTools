@@ -3,6 +3,7 @@
 <head>
     <title></title>
     <link rel="stylesheet" href="css/common.css" type="text/css"/>
+    <script type="text/javascript" src="js/fileSaver.js"></script>
     <style type="text/css">
         body {
             width:860px;
@@ -34,7 +35,7 @@
             margin-top: 1px;
             margin-left: 2px;
         }
-        #refresh{
+        .btn{
             margin-left: 20px;
             margin-top: 2px;
         }
@@ -48,6 +49,9 @@
         <div id="refresh" class="btn">
             <a href="#">Refresh</a>
         </div>
+        <div id="backup" class="btn">
+            <a href="#">Backup</a>
+        </div>
     </div>
     <div id="tableDiv">
         <table>
@@ -55,6 +59,6 @@
             <tbody id="searchHistory_tbody"></tbody>
         </table>
     </div>
+    <script type="text/javascript" src="js/options.js"></script>
 </body>
-<script type="text/javascript" src="js/options.js"></script>
 </html>

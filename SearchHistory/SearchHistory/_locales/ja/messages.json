@@ -31,5 +31,9 @@
 
   "refresh": { "message": "リフレッシュ" },
 
-  "all": { "message": "すべて"}
+  "backup": { "message": "バックアップ" },
+
+  "bakSucc": { "message": "[SearchHistoryBak.txt] ローカルにダウンロードされた!" },
+
+  "all": { "message": "すべて" }
 }

@@ -13,7 +13,7 @@
 
   "repUp": { "message": "替換上傳" },
 
-  "other": { "message": "其他" },
+  "other": { "message": "輔助" },
 
   "formatData": { "message": "格式化數據" },
 
@@ -31,5 +31,9 @@
 
   "refresh": { "message": "刷新" },
 
-  "all": { "message": "全部"}
+  "backup": { "message": "備份到本地" },
+
+  "bakSucc": { "message": "[SearchHistoryBak.txt] 已下載到本地!" },
+
+  "all": { "message": "全部" }
 }
