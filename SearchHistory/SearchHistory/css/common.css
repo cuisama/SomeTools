@@ -4,7 +4,7 @@
 }
 table
 {
-    width: 400px;
+    width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
     border-collapse: collapse;
@@ -45,4 +45,62 @@ table tr:nth-child(even)
     transition:all linear 0.30s;  
       
 }  
-.btn a:hover { background:#385f9e; }  
+.btn a:hover { 
+    background:#385f9e; 
+}
+
+#tableDiv{
+    width:100%;
+}
+#tableDiv table{
+    width:100%;
+}
+
+@media screen and (max-width: 1960px) {
+    body{
+        font-size: 16px;
+    }
+    .btn a {
+        font-size: 21px; 
+    }
+    #options{
+        width:1680px;
+        height:600px;
+    }
+    #popup{
+        width:600px;
+    }
+
+}
+
+@media screen and (max-width: 1440px) {
+    body{
+        font-size: 14px;
+    }
+    .btn a {
+        font-size: 19px; 
+    }
+    #options{
+        width:1280px;
+        height:500px;
+    }
+    #popup{
+        width:500px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    body{
+        font-size: 12px;
+    }
+    .btn a {
+        font-size: 16px; 
+    }
+    #options{
+        width:880px;
+        height:400px;
+    }
+    #popup{
+        width:400px;
+    }
+}

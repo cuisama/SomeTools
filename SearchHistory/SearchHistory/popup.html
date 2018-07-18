@@ -29,7 +29,6 @@
 
         table
         {
-            width: 400px;
             margin-top: 10px;
             margin-bottom: 10px;
         }
@@ -39,14 +38,14 @@
         }
     </style>
 </head>
-<body>
+<body id="popup">
     <div>
         <select id="selector"></select>
     </div>
     <div id="refresh" class="btn">
         <a href="#">Refresh</a>
     </div>
-    <div>
+    <div id="tableDiv">
         <table>
             <thead id="searchHistory_thead"><tr><th>time</th><th>key</th><th>ope</th></tr></thead>
             <tbody id="searchHistory_tbody"></tbody>

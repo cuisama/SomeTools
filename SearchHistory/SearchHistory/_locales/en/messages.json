@@ -1,4 +1,6 @@
 ﻿{
+  "locale": {"message": "en"},
+
   "title": { "message": "Search Engine Query History" },
 
   "description": { "message": "Record your search history across many search engines" },
@@ -34,6 +36,8 @@
   "backup": { "message": "Backup" },
 
   "bakSucc": { "message": "[SearchHistoryBak.txt] Downloaded to local!" },
+  
+  "versionCode": { "message": "Having the latest version complete" },
 
   "all": { "message": "All" }
 }

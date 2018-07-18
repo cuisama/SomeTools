@@ -1,4 +1,6 @@
 ﻿{
+  "locale": {"message": "en"},
+
   "title": { "message": "検索エンジンのクエリ履歴" },
 
   "description": { "message": "多くの検索エンジンで検索履歴を記録する" },
@@ -34,6 +36,8 @@
   "backup": { "message": "バックアップ" },
 
   "bakSucc": { "message": "[SearchHistoryBak.txt] ローカルにダウンロードされた!" },
+
+  "versionCode": { "message": "Having the latest version complete" },
 
   "all": { "message": "すべて" }
 }

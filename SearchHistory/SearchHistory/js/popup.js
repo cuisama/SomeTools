@@ -1,10 +1,10 @@
-
+﻿
 var bg = chrome.extension.getBackgroundPage();
 var $tbody = document.getElementById("searchHistory_tbody");
 var $thead = document.getElementById("searchHistory_thead");
 $thead.innerHTML = "<tr><th>" + bg.RM("time") + "</th><th>" + bg.RM("key") + "</th><th>" + bg.RM("option") + "</th></tr>";
 var $refresh = document.getElementById("refresh").getElementsByTagName("a")[0];
-$refresh.innerHTML = bg.RM("refresh");
+$refresh.innerHTML = bg.RM("refresh");  
 
     
 document.getElementById("refresh").onclick = function () {

@@ -1,4 +1,6 @@
 ﻿{
+  "locale": {"message": "zh"},
+
   "title": { "message": "搜索引擎查询历史" },
 
   "description": { "message": "记录您在众多搜索引擎的搜索历史" },
@@ -32,8 +34,10 @@
   "refresh": { "message": "刷新" },
 
   "backup": { "message": "备份到本地" },
-  
-  "bakSucc": {"message": "[SearchHistoryBak.txt] 已下载到本地!"},
 
-  "all": { "message": "全部"}
+  "bakSucc": { "message": "[SearchHistoryBak.txt] 已下载到本地!" },
+
+  "versionCode": { "message": "有最新的版本了" },
+
+  "all": { "message": "全部" }
 }

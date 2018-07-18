@@ -200,3 +200,39 @@ function exec(url) {
 function RM(key) {
     return chrome.i18n.getMessage(key);
 }
+function showVersionUpdate() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                var versionCode = xhr.responseText.match(/versionCode:\[.*\]/)[0];
+                versionCode = versionCode.match(/\[.*\]/)[0];
+                versionCode = versionCode.substring(1, versionCode.length - 1);
+                var reg = new RegExp("versionMsg_" + RM("locale") + ":\\[.*\\]");
+                var versionMsg = reg.exec(xhr.responseText)[0];
+                versionMsg = versionMsg.match(/\[.*\]/)[0];
+                versionMsg = versionMsg.substring(1, versionMsg.length - 1);
+                if (compVersion("1.0.10", versionCode) < 0) {
+                    chrome.notifications.create(null, {
+                        type: 'basic',
+                        iconUrl: 'img/icon.png',
+                        title: RM("versionCode"),
+                        message: versionMsg.split('\\n').join("\n")
+                    });
+                }
+            }
+        }
+    };
+    xhr.open("get", "https://blog.csdn.net/AHcpCuiIan/article/details/81096205", true);
+    xhr.send();
+}
+
+function compVersion(v1,v2) {
+    s1 = v1.split('.');
+    s2 = v2.split('.');
+    for (var i = 0; i < 3; i++) {
+        if (s1[i] == s2[i]) continue;
+        break;
+    }
+    return s1[i] - s2[i];
+}
