@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="SearchHistory\css\1960.css" />
+    <Content Include="SearchHistory\css\1440.css" />
+    <Content Include="SearchHistory\css\1024.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

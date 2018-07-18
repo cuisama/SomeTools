@@ -1,4 +1,21 @@
 ﻿
+if (screen.width <= 1024)
+{
+    document.write('<link href="/css/1024.css" rel="stylesheet" type="text/css" />');
+}
+else if (screen.width <= 1440)
+{
+    document.write('<link href="/css/1440.css" rel="stylesheet" type="text/css" />');
+} 
+else
+{
+    document.write('<link href="/css/1960.css" rel="stylesheet" type="text/css" />');
+}
+if (navigator.userAgent.indexOf("SE 2.X MetaSr 1.0") > -1) {
+    document.body.style.height = "400px";
+}
+
+
 var bg = chrome.extension.getBackgroundPage();
 var $tbody = document.getElementById("searchHistory_tbody");
 var $thead = document.getElementById("searchHistory_thead");
@@ -53,7 +70,10 @@ function createTable() {
                 var key = trNode.id;
                 $tbody.removeChild(trNode);
                 delete searchHistory[today][key];
+                //document.body.style.height = $tbody.clientHeight + 45 + "px";
             }
         })(tras[i].parentNode.parentNode);
     }
+    //document.body.style.height = $tbody.clientHeight + 45 + "px";
+    
 }
