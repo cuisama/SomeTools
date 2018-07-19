@@ -172,16 +172,16 @@ function exec(url) {
         key = key[0].substring(4).replace("&", "");
     } else if (url.match(/(www.bing.com)/)) {
         key = url.match(/(\?|&)q=.*?(&|$)/);
-        key = key[0].substring(4).replace("&", "");
+        key = key[0].substring(3).replace("&", "");
     } else if (url.match(/(www.so.com)/)) {
         key = url.match(/(\?|&)q=.*?(&|$)/);
-        key = key[0].substring(4).replace("&", "");
+        key = key[0].substring(3).replace("&", "");
     } else if (url.match(/(www.sogou.com)/)) {
         key = url.match(/(\?|&)query=.*?(&|$)/);
-        key = key[0].substring(4).replace("&", "");
+        key = key[0].substring(7).replace("&", "");
     } else if (url.match(/(search.yahoo.)/)) {
         key = url.match(/(\?|&)p=.*?(&|$)/);
-        key = key[0].substring(4).replace("&", "");
+        key = key[0].substring(3).replace("&", "");
     }
     else {
         return;
@@ -212,10 +212,10 @@ function showVersionUpdate() {
                 var versionMsg = reg.exec(xhr.responseText)[0];
                 versionMsg = versionMsg.match(/\[.*\]/)[0];
                 versionMsg = versionMsg.substring(1, versionMsg.length - 1);
-                if (compVersion("1.0.10", versionCode) < 0) {
+                if (compVersion(RM("version"), versionCode) < 0) {
                     chrome.notifications.create(null, {
                         type: 'basic',
-                        iconUrl: 'img/icon.png',
+                        iconUrl: 'img/wa.png',
                         title: RM("versionCode"),
                         message: versionMsg.split('\\n').join("\n")
                     });
@@ -235,4 +235,9 @@ function compVersion(v1,v2) {
         break;
     }
     return s1[i] - s2[i];
+}
+
+function mediaCss(document) {
+    var css = screen.width <= 1024 ? "1024" : screen.width <= 1440 ? "1440" : "1960";
+    document.write("<link href='/css/" + css + ".css' rel='stylesheet' type='text/css' />");
 }

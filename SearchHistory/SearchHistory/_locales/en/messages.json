@@ -1,5 +1,7 @@
 ﻿{
-  "locale": {"message": "en"},
+  "locale": { "message": "en" },
+
+  "version": {"message": "1.0.11"},
 
   "title": { "message": "Search Engine Query History" },
 
