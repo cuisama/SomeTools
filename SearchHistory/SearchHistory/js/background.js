@@ -80,6 +80,9 @@ function formatData() {
             var s = searchHistory[date][key].split(':');
             temp[nDate][key] = pf(s[0], 2, '0') + ":" + pf(s[1], 2, '0') + ":" + pf(s[2], 2, '0');
         }
+        if (JSON.stringify(temp[nDate]) == "{}") {
+            delete temp[nDate];
+        }
     }
     searchHistory = objKeySort(temp);
     show(RM("finish"));
