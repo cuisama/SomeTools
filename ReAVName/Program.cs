@@ -13,7 +13,7 @@ namespace ReAVName
     class Program 
     {
         private static bool DB = true;
-        private static string MODE = "MUL";
+        private static string MODE = "NO_MUL";
         private static string Extension = ".mp4.avi.rmvb.mov.mpeg.wmv.flv.mkv.rm";
 
         static void Main(string[] args)
@@ -72,7 +72,7 @@ namespace ReAVName
                             title = v.Name;
                             string sNewDirectory = Path.Combine(file.DirectoryName, "【" + title + file.Extension);
                             Console.WriteLine(sNewDirectory);
-                            //Directory.Move(files[i], sNewDirectory);
+                            Directory.Move(files[i], sNewDirectory);
                         }
 
                     }
