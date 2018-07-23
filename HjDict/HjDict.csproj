@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util.cs" />
     <Content Include="words.en.txt" />
+    <Content Include="words.jp.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -14,17 +14,21 @@ namespace HjDict
     {
         private static string LocalPath = Directory.GetCurrentDirectory() + "\\..\\..";
 
-        private static string DealFile = "words.en.txt";
+        private static string DealFile = "words.jp.txt";
         private static string folderName = DealFile.Substring(0, DealFile.LastIndexOf('.'));
         private static string resPath = Path.Combine(LocalPath, folderName);
 
+        private static string EN_DICT = "https://dict.hjenglish.com/w/{0}";
+        private static string JP_DICT = "https://dict.hjenglish.com/jp/jc/{0}";
+
+        private static string DICT = JP_DICT;
 
         static void Main(string[] args)
         {
             ThreadPool.SetMaxThreads(1000, 1000);
             Directory.CreateDirectory(resPath);
             DoWork();
-
+            Console.Write("end");
             Console.ReadLine();
         }
 
@@ -35,11 +39,16 @@ namespace HjDict
 
 
             string line = "";
-            Regex wordEnRegex = new Regex("^[a-zA-Z]+$");
+            
+            Regex wordRegex = new Regex("^[a-zA-Z]+$");
+            if (DICT.Equals(JP_DICT))
+            {
+                wordRegex = new Regex(".*");
+            }
             while((line = sr.ReadLine()) != null)
             {
                 line = line.Trim();
-                if (wordEnRegex.IsMatch(line))
+                if (wordRegex.IsMatch(line))
                 {
                     Word w = HttpGet(line);
                     WriteWord(w);
@@ -53,7 +62,7 @@ namespace HjDict
             Word word = new Word();
             try
             {
-                string url = string.Format("https://dict.hjenglish.com/w/{0}", w);
+                string url = string.Format(DICT, w);
                 HttpWebRequest requst = WebRequest.CreateHttp(url);
                 requst.Method = "Get";
                 HttpWebResponse response = (HttpWebResponse)requst.GetResponse();
