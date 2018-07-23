@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReAVName", "ReAVName\ReAVNa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchHistory", "SearchHistory\SearchHistory.csproj", "{C52242E2-FAC4-49C1-BF78-DF1ED7FFE24E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HjDict", "HjDict\HjDict.csproj", "{6C9F8775-0B69-4E39-9DE1-D6A481DFF1F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C52242E2-FAC4-49C1-BF78-DF1ED7FFE24E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C52242E2-FAC4-49C1-BF78-DF1ED7FFE24E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C52242E2-FAC4-49C1-BF78-DF1ED7FFE24E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C9F8775-0B69-4E39-9DE1-D6A481DFF1F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C9F8775-0B69-4E39-9DE1-D6A481DFF1F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C9F8775-0B69-4E39-9DE1-D6A481DFF1F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C9F8775-0B69-4E39-9DE1-D6A481DFF1F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
