@@ -30,10 +30,73 @@ namespace HjDict
         /// <param name="html"></param>
         /// <param name="tag"></param>
         /// <param name="clz"></param>
-        /// <returns></returns>
+        /// <returns></returns>(Regex.Match(html, string.Format("<div class=\"{0}\"((.|\n)*?<div(.|\n)*?</div>(.|\n)*?)*</div>", clz))).Value
         public static string Class(this string html, Tag tag, string clz)
         {
             return Regex.Match(html, string.Format("<{0} class=\"{1}\"(.|\n)*?{0}>", tag.ToString(), clz)).Value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="html"></param>
+        /// <param name="clz"></param>
+        /// <returns></returns>
+        public static string[] Pane(this string html, string clz)
+        {
+            MatchCollection mc = Regex.Matches(html, string.Format("<div class=\"{1}\"((.|\n)*?<div(.|\n)*?</div>(.|\n)*?)*?</div>", Tag.div.ToString(), clz));
+            string[] pane = new string[mc.Count];
+            int index = 0;
+            foreach (Match m in mc)
+            {
+                pane[index++] = m.Value;
+            }
+            return pane;
+        }
+
+        public static string[] Match(this string html,string clz)
+        {
+            int count = Regex.Matches(html, string.Format("<div class=\"{0}\">", clz)).Count;
+            string[] result = new string[count]; 
+
+            string[] lines = html.Split('\n');
+            bool go = false;
+            int pi = 0;
+            int index = 0;
+            for(int i = 0; i < lines.Length; i++)
+            {
+                if (index >= count) break;
+                if (go)
+                {
+                    result[index] += lines[i] + "\n";
+                    if (lines[i].Contains("<div"))
+                    {
+                        int t = (lines[i].Length - lines[i].Replace("<div", "").Length) / 4;
+                        pi += t;
+                    }
+                    if (lines[i].Contains("</div>"))
+                    {
+                        int t = (lines[i].Length - lines[i].Replace("</div>", "").Length) / 6;
+                        pi -= t;
+                        if (pi < 0) pi = 0;
+                    }
+                    if (pi == 0)
+                    {
+                        pi = 0;
+                        index++;
+                        go = false;
+                    }
+                    continue;
+                }
+
+                if (lines[i].Contains(string.Format("<div class=\"{0}\">", clz)))
+                {
+                    pi = 1;
+                    result[index] = lines[i] + "\n";
+                    go = true;
+                }
+            }
+            return result;
         }
 
         /// <summary>

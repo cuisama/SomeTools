@@ -15,6 +15,8 @@ CREATE TABLE [dbo].[WORD_EN](
 	Inflections [nvarchar](500) NULL,
 	AudioUrl [nvarchar](100) NULL,
 	Audio [varbinary](max) NULL,
+	UpdateCount [numeric](4, 0) NOT NULL,
+	UpdateTime [datetime] NOT NULL,
  CONSTRAINT [PK_WORD_EN] PRIMARY KEY CLUSTERED 
 (
 	Value

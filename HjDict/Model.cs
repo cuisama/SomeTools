@@ -24,8 +24,8 @@ namespace HjDict
         public string Value { get; set; }
         public string Sample { get; set; }
         public string Pronounces { get; set; }
-        public string Audio { get; set; }
         public string Detail { get; set; }
+        public string Audio { get; set; }
 
         public override string ToString()
         {
@@ -69,7 +69,9 @@ namespace HjDict
     /// </summary>
     public class WordJp : Word
     {
-        public string PronouncesEn { get; set; }
-        public string PronouncesUs { get; set; }
+        /// <summary>
+        /// 扩展词汇
+        /// </summary>
+        public string Synant { get; set; }
     }
 }

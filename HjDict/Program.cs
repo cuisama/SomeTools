@@ -24,20 +24,20 @@ namespace HjDict
 
         private static string DICT = JP_DICT;
 
-        private delegate Word WordDeal(string result);
+        private delegate Word[] WordDeal(string result);
 
         private static void Init()
         {
             if (File.Exists(Para.LOG_PATH))
             {
-                File.Delete(Para.LOG_PATH);
+                //File.Delete(Para.LOG_PATH);
             }
 
             ThreadPool.SetMaxThreads(1000, 1000);
             Directory.CreateDirectory(resPath);
 
             DICT = EN_DICT;
-            DealFile = "words.en.txtemp";
+            DealFile = "words.en.txt";
         }
 
         static void Main(string[] args)
@@ -57,34 +57,58 @@ namespace HjDict
             string wordsFile = Path.Combine(LocalPath, DealFile);
             StreamReader sr = new StreamReader(wordsFile);
 
-
+            Word[] words = null;
             string line = "";
             
-            Regex wordRegex = new Regex(".*");
+            Regex wordRegex = new Regex(".+");
             if (DICT.Equals(EN_DICT))
             {
                 wordRegex = new Regex("^[a-zA-Z]+$");
             }
+            int index = 0;
             while((line = sr.ReadLine()) != null)
             {
                 line = line.Trim();
                 if (wordRegex.IsMatch(line))
                 {
-                    Word w = HttpGet(line);
-                    WriteWord(w);
+                    Console.Write(++index + "、");
+                    string result = HttpGet(line);
+
+                    if (DICT.Equals(EN_DICT))
+                    {
+                        words = new WordDeal(DealWordEn)(result);
+                    }
+                    else if (DICT.Equals(JP_DICT))
+                    {
+                        words = new WordDeal(DealWordJp)(result);
+                    }
+
+                    foreach (Word word in words)
+                    {
+                        WriteWotd2DB(word);
+                        //ThreadPool.QueueUserWorkItem(new WaitCallback(WriteWotd2DB), word);
+
+                        Dictionary<string, string> para = new Dictionary<string, string>();
+                        para.Add("url", word.Audio);
+                        para.Add("resName", word.Value);
+                        ThreadPool.QueueUserWorkItem(new WaitCallback(DownResource), para);
+                        Console.Write(word.Value);
+                        WriteWord(word);
+                    }
+                    Console.WriteLine("");
                 }
             }
 
         }
 
         /// <summary>
-        /// http请求释义
+        /// http请求网页信息
         /// </summary>
         /// <param name="w"></param>
         /// <returns></returns>
-        private static Word HttpGet(string w)
+        private static string HttpGet(string w)
         {
-            Word word = null;
+            string result = "";
             try
             {
                 string url = string.Format(DICT, w);
@@ -92,31 +116,13 @@ namespace HjDict
                 requst.Method = "Get";
                 HttpWebResponse response = (HttpWebResponse)requst.GetResponse();
                 StreamReader sr = new StreamReader(response.GetResponseStream());
-                string result = sr.ReadToEnd();
-
-                if (DICT.Equals(EN_DICT))
-                {
-                    word = new WordDeal(DealWordEn)(result);
-                }
-                else if (DICT.Equals(JP_DICT))
-                {
-                    word = new WordDeal(DealWordJp)(result);
-                }
-                
-                WriteWotd2DB(word);
-                //ThreadPool.QueueUserWorkItem(new WaitCallback(WriteWotd2DB), word);
-
-                Dictionary<string, string> para = new Dictionary<string, string>();
-                para.Add("url", word.Audio);
-                para.Add("resName", word.Value);
-                ThreadPool.QueueUserWorkItem(new WaitCallback(DownResource), para);
-
+                result = sr.ReadToEnd();
             }
             catch(Exception ex)
             {
                 Log.Write("GetWord Filed [{0}]\t{1}", w, ex.Message);
             }
-            return word;
+            return result;
         }
 
         /// <summary>
@@ -124,7 +130,7 @@ namespace HjDict
         /// </summary>
         /// <param name="w"></param>
         /// <returns></returns>
-        private static Word DealWordEn(string result)
+        private static Word[] DealWordEn(string result)
         {
             WordEn word = new WordEn();
 
@@ -153,7 +159,7 @@ namespace HjDict
             word.Inflections = inflections.FilterHTML();
             word.Phrase = phrase.FilterHTML_();
 
-            return word;
+            return new Word[] { word };
         }
 
         /// <summary>
@@ -161,9 +167,30 @@ namespace HjDict
         /// </summary>
         /// <param name="result"></param>
         /// <returns></returns>
-        private static Word DealWordJp(string result)
+        private static Word[] DealWordJp(string result)
         {
-            return null;
+
+            string[] pane = result.Match("word-details-pane");
+            WordJp[] word = new WordJp[pane.Length];
+
+            for(int i = 0; i < pane.Length; i++)
+            {
+                string value = pane[i].Class("word-text");
+                string sample = pane[i].Class("simple");
+                string pronounces = pane[i].Class("pronounces");
+                string audio = pronounces.Class(Tag.span, "word-audio");
+                string detail = pane[i].Class("word-details-item detail");
+                string synant = pane[i].Class("word-details-item synant");
+
+                word[i] = new WordJp();
+                word[i].Value = value.FilterHTML();
+                word[i].Sample = sample.FilterHTML();
+                word[i].Pronounces = pronounces.FilterHTML();
+                word[i].Audio = audio.Attr("data-src");
+                word[i].Detail = detail.FilterHTML_();
+                word[i].Synant = synant.FilterHTML_();
+            }
+            return word;
         }
 
         /// <summary>
@@ -215,7 +242,6 @@ namespace HjDict
         /// <param name="w"></param>
         private static void WriteWord(Word w)
         {
-            Console.WriteLine(w.Value);
             string wordsFile_ = Path.Combine(LocalPath, "_" + DealFile);
             StreamWriter sw = null;
 
@@ -223,7 +249,6 @@ namespace HjDict
             {
                 sw = new StreamWriter(wordsFile_, true);
                 sw.WriteLine(w.ToString());
-
             }
             finally
             {
@@ -251,12 +276,44 @@ namespace HjDict
                 {
                     WordEn w = word as WordEn;
                     w = (WordEn)w.FilterDB();
-                    sql = "INSERT INTO WORD_EN(Value, PronouncesUs, Sample, Phrase, Detail, PronouncesEn, DetailEnEn, Synant, Inflections, AudioUrl, Audio) VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}',N'{6}',N'{7}',N'{8}',N'{9}',NULL)";
+                    sql = @"UPDATE WORD_EN 
+                            SET PronouncesUs = N'{1}', 
+                                Sample = N'{2}', 
+                                Phrase = N'{3}', 
+                                Detail = N'{4}', 
+                                PronouncesEn = N'{5}', 
+                                DetailEnEn = N'{6}', 
+                                Synant = N'{7}', 
+                                Inflections = N'{8}', 
+                                AudioUrl = N'{9}', 
+                                UpdateCount = UpdateCount + 1, 
+                                UpdateTime = GETDATE() WHERE VALUE = N'{0}';
+                            IF @@ROWCOUNT = 0 
+                            INSERT INTO WORD_EN(
+                                Value, PronouncesUs, Sample, Phrase, Detail, PronouncesEn, 
+                                DetailEnEn, Synant, Inflections, AudioUrl, Audio, 
+                                UpdateCount, UpdateTime
+                            ) VALUES (
+                                N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}',N'{6}',N'{7}',N'{8}',N'{9}',NULL, 0, GETDATE()
+                            )";
                     sql = string.Format(sql, w.Value, w.PronouncesUs, w.Sample, w.Phrase, w.Detail, w.PronouncesEn, w.DetailEnEn, w.Synant, w.Inflections, w.Audio);
                 }
                 else if(word.GetType() == typeof(WordJp))
                 {
-
+                    WordJp w = word as WordJp;
+                    w = (WordJp)w.FilterDB();
+                    sql = @"UPDATE WORD_JP 
+                            SET Sample = N'{2}', 
+                                Detail = N'{3}',
+                                Synant = N'{4}', 
+                                AudioUrl = N'{5}', 
+                                UpdateCount = UpdateCount + 1, 
+                                UpdateTime = GETDATE() WHERE VALUE = N'{0}' AND Pronounces = N'{1}';
+                            IF @@ROWCOUNT = 0 
+                            INSERT INTO WORD_JP(
+                                Value, Pronounces, Sample, Detail, Synant, AudioUrl, Audio, UpdateCount, UpdateTime
+                            ) VALUES (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}', NULL, 0, GETDATE())";
+                    sql = string.Format(sql, w.Value, w.Pronounces, w.Sample, w.Detail, w.Synant, w.Audio);
                 }
 
                 using (DbManager db = new DbManager())
@@ -268,7 +325,7 @@ namespace HjDict
             {
                 if(ex.GetType() == typeof(SqlException) && ((SqlException)ex).Number == 2627)
                 {
-
+                    //sql = "UPDATE WORD_JP";
                 }
                 else
                 {
