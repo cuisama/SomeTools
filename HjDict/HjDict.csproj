@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbManager.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Para.cs" />
@@ -51,6 +52,12 @@
     <Compile Include="Util.cs" />
     <Content Include="words.en.txt" />
     <Content Include="words.jp.txt" />
+    <Content Include="WORD_JP.sql">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WORD_EN.sql">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
