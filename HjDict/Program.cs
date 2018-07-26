@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -16,6 +18,7 @@ namespace HjDict
         private static string LocalPath = Directory.GetCurrentDirectory() + "\\..\\..";
 
         private static string DealFile = "words.jp.txt";
+        private static string DealFileTo = "";
         private static string folderName = DealFile.Substring(0, DealFile.LastIndexOf('.'));
         private static string resPath = Path.Combine(LocalPath, folderName);
 
@@ -38,15 +41,67 @@ namespace HjDict
 
             DICT = EN_DICT;
             DealFile = "words.en.txt";
+            DealFileTo = DealFile + "_" + DateTime.Now.ToString("yyyyMMddhhmmss");
         }
 
         static void Main(string[] args)
         {
-            Init();
-            DoWork();
+            temp();
+            //Init();
+            //DoWork();
 
-            Console.Write("end");
-            Console.ReadLine();
+            //Console.WriteLine("end");
+
+            //string line = "";
+            //while((line = Console.ReadLine()) != null)
+            //{
+            //    DealWord(line);
+            //}
+        }
+
+        /// <summary>
+        /// 将数据库中sample字段 将词性前边的空格 替换为 换行符
+        /// </summary>
+        private static void temp()
+        {
+            using (DbManager db = new DbManager())
+            {
+                DataTable dt = db.CreateDataTable("select Value,Sample from WORD_EN");
+                for(int i = 0; i < dt.Rows.Count; i++)
+                {
+                    string sampleColumn = dt.Rows[i]["Sample"].ToString();
+                    if (!sampleColumn.Contains("\n"))
+                    {
+                        string sample = Regex.Replace(sampleColumn, "\\ (?=[a-zA-Z]{1,6}\\.)", "\n");
+                        string sql = string.Format("update WORD_EN set Sample=N'{0}' where Value = N'{1}'",
+                            sample, dt.Rows[i]["Value"].ToString());
+                        db.ExeceteQuery(sql);
+                    }
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void temp2()
+        {
+            string sql = @"select '[' + Convert(varchar(5), ROW_NUMBER() OVER(ORDER BY updatetime desc)) + ']'
+                                + CHAR(10) + '*****************************************************'
+                                + CHAR(10) + Value
+                                + CHAR(10) + (case when PronouncesUs is null or PronouncesUs ='美' then PronouncesEn else PronouncesUs end)
+                                + CHAR(10) + Sample
+                                + CHAR(10) + replace(replace(Phrase,'源自:《新世纪英汉大词典》Collins外研社
+                                ',''),'常用短语
+                                ','')
+                                + CHAR(10) + '*****************************************************' + CHAR(10) 
+                                from WORD_EN order by updatetime desc";
+
+            SoundPlayer player = new SoundPlayer();
+            player.SoundLocation = "音乐文件名";
+            player.Load();
+            player.Play();
         }
 
         /// <summary>
@@ -57,48 +112,63 @@ namespace HjDict
             string wordsFile = Path.Combine(LocalPath, DealFile);
             StreamReader sr = new StreamReader(wordsFile);
 
-            Word[] words = null;
             string line = "";
             
+            while((line = sr.ReadLine()) != null)
+            {
+                DealWord(line);
+            }
+
+        }
+        
+        private static int index = 0;
+
+        /// <summary>
+        /// 处理一个词汇
+        /// </summary>
+        /// <param name="line"></param>
+        private static void DealWord(string line)
+        {
+            line = line.Trim();
+
             Regex wordRegex = new Regex(".+");
             if (DICT.Equals(EN_DICT))
             {
                 wordRegex = new Regex("^[a-zA-Z]+$");
             }
-            int index = 0;
-            while((line = sr.ReadLine()) != null)
+
+            if (wordRegex.IsMatch(line))
             {
-                line = line.Trim();
-                if (wordRegex.IsMatch(line))
+                Console.Write(++index + "、");
+                Word[] words = null;
+                string result = HttpGet(line);
+
+                if (DICT.Equals(EN_DICT))
                 {
-                    Console.Write(++index + "、");
-                    string result = HttpGet(line);
-
-                    if (DICT.Equals(EN_DICT))
-                    {
-                        words = new WordDeal(DealWordEn)(result);
-                    }
-                    else if (DICT.Equals(JP_DICT))
-                    {
-                        words = new WordDeal(DealWordJp)(result);
-                    }
-
-                    foreach (Word word in words)
-                    {
-                        WriteWotd2DB(word);
-                        //ThreadPool.QueueUserWorkItem(new WaitCallback(WriteWotd2DB), word);
-
-                        Dictionary<string, string> para = new Dictionary<string, string>();
-                        para.Add("url", word.Audio);
-                        para.Add("resName", word.Value);
-                        ThreadPool.QueueUserWorkItem(new WaitCallback(DownResource), para);
-                        Console.Write(word.Value);
-                        WriteWord(word);
-                    }
-                    Console.WriteLine("");
+                    words = new WordDeal(DealWordEn)(result);
                 }
+                else if (DICT.Equals(JP_DICT))
+                {
+                    words = new WordDeal(DealWordJp)(result);
+                }
+
+                foreach (Word word in words)
+                {
+                    WriteWotd2DB(word);
+                    //ThreadPool.QueueUserWorkItem(new WaitCallback(WriteWotd2DB), word);
+
+                    Dictionary<string, string> para = new Dictionary<string, string>();
+                    para.Add("url", word.Audio);
+                    para.Add("resName", word.Value);
+                    ThreadPool.QueueUserWorkItem(new WaitCallback(DownResource), para);
+                    Console.Write(word.Value);
+                    WriteWord(word);
+                }
+                Console.WriteLine("");
             }
 
+
+            
         }
 
         /// <summary>
@@ -145,12 +215,12 @@ namespace HjDict
             string inflections = result.Class("word-details-item inflections");
             string phrase = result.Class("word-details-item phrase");
 
-            word.Value = value.FilterHTML();
+            word.Value = value.FilterHTML_();
             word.Sample = sample.FilterHTML();
             word.Pronounces = pronounces.FilterHTML();
             word.Audio = audio.Attr("data-src");
 
-            word.PronouncesEn = Regex.Replace(word.Pronounces, "美.\\[.*?\\]", "").Trim();
+            word.PronouncesEn = Regex.Replace(word.Pronounces, "美(.\\[.*?\\])?", "").Trim();
             word.PronouncesUs = Regex.Replace(word.Pronounces, "英.\\[.*?\\]", "").Trim();
 
             word.Detail = detail.FilterHTML_();
@@ -183,7 +253,7 @@ namespace HjDict
                 string synant = pane[i].Class("word-details-item synant");
 
                 word[i] = new WordJp();
-                word[i].Value = value.FilterHTML();
+                word[i].Value = value.FilterHTML_();
                 word[i].Sample = sample.FilterHTML();
                 word[i].Pronounces = pronounces.FilterHTML();
                 word[i].Audio = audio.Attr("data-src");
@@ -242,7 +312,7 @@ namespace HjDict
         /// <param name="w"></param>
         private static void WriteWord(Word w)
         {
-            string wordsFile_ = Path.Combine(LocalPath, "_" + DealFile);
+            string wordsFile_ = Path.Combine(LocalPath, DealFileTo);
             StreamWriter sw = null;
 
             try

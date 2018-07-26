@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchHistory", "SearchHist
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HjDict", "HjDict\HjDict.csproj", "{6C9F8775-0B69-4E39-9DE1-D6A481DFF1F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HjDictClient", "HjDictClient\HjDictClient.csproj", "{7C592782-FF01-4DA5-BE8A-9A45F2C3C8BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6C9F8775-0B69-4E39-9DE1-D6A481DFF1F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C9F8775-0B69-4E39-9DE1-D6A481DFF1F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C9F8775-0B69-4E39-9DE1-D6A481DFF1F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C592782-FF01-4DA5-BE8A-9A45F2C3C8BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C592782-FF01-4DA5-BE8A-9A45F2C3C8BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C592782-FF01-4DA5-BE8A-9A45F2C3C8BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C592782-FF01-4DA5-BE8A-9A45F2C3C8BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

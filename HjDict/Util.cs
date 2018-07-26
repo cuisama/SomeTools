@@ -37,7 +37,7 @@ namespace HjDict
         }
 
         /// <summary>
-        /// 
+        /// 不使用 正则有点问题
         /// </summary>
         /// <param name="html"></param>
         /// <param name="clz"></param>
@@ -54,6 +54,12 @@ namespace HjDict
             return pane;
         }
 
+        /// <summary>
+        /// 提取指定clz的div节点 （匹配对称的节点）
+        /// </summary>
+        /// <param name="html"></param>
+        /// <param name="clz"></param>
+        /// <returns></returns>
         public static string[] Match(this string html,string clz)
         {
             int count = Regex.Matches(html, string.Format("<div class=\"{0}\">", clz)).Count;
@@ -122,7 +128,7 @@ namespace HjDict
 
             html = Regex.Replace(html, "<.+?>|\n", "");
             html = Regex.Replace(html, "\\ +", " ");
-            return html.Trim();
+            return html.Replace(FilterRule).Trim();
         }
 
         /// <summary>
@@ -160,12 +166,21 @@ namespace HjDict
             return html;
         }
 
-
+        /// <summary>
+        /// 将字段数据 转变成 可以插到数据库里的数据
+        /// </summary>
+        /// <param name="html"></param>
+        /// <returns></returns>
         public static string FilterDB(this string html)
         {
             return html.Replace("'", "''");
         }
 
+        /// <summary>
+        /// 把整个单词数据 转化成 可插入数据库的
+        /// </summary>
+        /// <param name="word"></param>
+        /// <returns></returns>
         public static Word FilterDB(this Word word)
         {
             PropertyInfo[] PropertyList = word.GetType().GetProperties();
