@@ -46,7 +46,7 @@
             this.BtnPron.BackColor = System.Drawing.SystemColors.Window;
             this.BtnPron.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnPron.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnPron.Location = new System.Drawing.Point(367, 37);
+            this.BtnPron.Location = new System.Drawing.Point(429, 29);
             this.BtnPron.Name = "BtnPron";
             this.BtnPron.Size = new System.Drawing.Size(47, 20);
             this.BtnPron.TabIndex = 1;
@@ -62,7 +62,7 @@
             this.Controls.Add(this.BtnPron);
             this.Controls.Add(this.lblInfo);
             this.Name = "UctWordEn";
-            this.Size = new System.Drawing.Size(436, 69);
+            this.Size = new System.Drawing.Size(504, 69);
             this.ResumeLayout(false);
             this.PerformLayout();
 

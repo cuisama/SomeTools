@@ -48,17 +48,12 @@ namespace HjDictClient
             }
         }
 
-        private void PlayAudio(object o)
-        {
-            SoundPlayer.SpeakAsync(Value);
-            //SoundPlayer.Play();
-        }
-
         private void BtnPron_Click(object sender, EventArgs e)
         {
             if (SoundPlayer != null)
             {
-                ThreadPool.QueueUserWorkItem(new WaitCallback(PlayAudio));
+                SoundPlayer.SpeakAsync(Value);
+                //SoundPlayer.Play();
             }
         }
     }

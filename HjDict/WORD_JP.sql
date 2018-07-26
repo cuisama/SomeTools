@@ -1,8 +1,8 @@
-﻿--USE ENTSVR;
-USE CTest;
+﻿USE ENTSVR;
+--USE CTest;
 GO
-DROP TABLE [dbo].[WORD_JP]
-GO
+--DROP TABLE [dbo].[WORD_JP]
+--GO
 CREATE TABLE [dbo].[WORD_JP](
 	Value [nvarchar](40) NOT NULL,
 	Pronounces [nvarchar](100) NOT NULL,

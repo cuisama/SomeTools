@@ -12,6 +12,7 @@ namespace HjDictClient
 {
     public partial class Main : Form
     {
+        private Control.ControlCollection Container = null;
         public Main()
         {
             InitializeComponent();
@@ -21,7 +22,8 @@ namespace HjDictClient
 
         private void UpdateControlStatus()
         {
-            this.AutoScroll = true;
+            //this.AutoScroll = true;
+            Container = PALWords.Controls;
         }
 
         private void Init()
@@ -31,9 +33,7 @@ namespace HjDictClient
                                 + CHAR(10) + Value
                                 + CHAR(10) + (case when PronouncesUs is null or PronouncesUs ='美' then PronouncesEn else PronouncesUs end)
                                 + CHAR(10) + Sample
-                                + CHAR(10) + replace(replace(Phrase,'源自:《新世纪英汉大词典》Collins外研社
-                                ',''),'常用短语
-                                ','')
+                                + CHAR(10) + replace(replace(Phrase, '源自:《新世纪英汉大词典》Collins外研社',''), '常用短语', char(10) + '常用短语')
                                 + CHAR(10) + '*****************************************************' + CHAR(10) AS Info 
                                 from WORD_EN order by updatetime desc";
 
@@ -42,43 +42,31 @@ namespace HjDictClient
                 dt = db.CreateDataTable(sql);
             }
 
-            int startLocationY = 10;
+            UctPage.Init(dt.Rows.Count);
+            UctPage.GoPage = new UctPage.UctBtnGoPage(GoPage);
 
-            page = new UctPage(dt.Rows.Count);
-            page.Location = new Point(0, startLocationY);
-            page.GoPage = new UctPage.UctBtnGoPage(GoPage);
-            this.Controls.Add(page);
-
-            
             GoPage(1);
-
 
         }
         private DataTable dt = null;
-        private UctPage page = null;
 
 
         private void GoPage(int index)
         {
-            foreach(Control con in Controls)
-            {
-                if(con.GetType() == typeof(UctWordEn))
-                {
-                    Controls.Remove(con);
-                }
-            }
+            Container.Clear();
 
-            int startLocationY = page.Location.Y + page.Height;
+            int startLocationY = 0;
 
-            int start = (index - 1) * page.PrePageCount;
-            int end = Math.Min(dt.Rows.Count, index * page.PrePageCount);
+            int start = (index - 1) * UctPage.PrePageCount;
+            int end = Math.Min(dt.Rows.Count, index * UctPage.PrePageCount);
 
             for (int i = start; i < end; i++)
             {
                 UctWordEn card = new UctWordEn(dt.Rows[i]);
                 card.Location = new Point(0, startLocationY);
+                card.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
                 startLocationY += card.Height;
-                this.Controls.Add(card);
+                Container.Add(card);
             }
 
         }

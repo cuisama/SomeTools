@@ -17,15 +17,15 @@ namespace HjDict
     {
         private static string LocalPath = Directory.GetCurrentDirectory() + "\\..\\..";
 
-        private static string DealFile = "words.jp.txt";
+        private static string DICT = "";
+        private static string DealFile = "";
         private static string DealFileTo = "";
-        private static string folderName = DealFile.Substring(0, DealFile.LastIndexOf('.'));
-        private static string resPath = Path.Combine(LocalPath, folderName);
+        private static string folderName = "";
+        private static string resPath = "";
 
         private static string EN_DICT = "https://dict.hjenglish.com/w/{0}";
         private static string JP_DICT = "https://dict.hjenglish.com/jp/jc/{0}";
 
-        private static string DICT = JP_DICT;
 
         private delegate Word[] WordDeal(string result);
 
@@ -37,26 +37,27 @@ namespace HjDict
             }
 
             ThreadPool.SetMaxThreads(1000, 1000);
-            Directory.CreateDirectory(resPath);
 
             DICT = EN_DICT;
             DealFile = "words.en.txt";
+            folderName = DealFile.Substring(0, DealFile.LastIndexOf('.'));
+            resPath = Path.Combine(LocalPath, folderName);
+            Directory.CreateDirectory(resPath);
             DealFileTo = DealFile + "_" + DateTime.Now.ToString("yyyyMMddhhmmss");
         }
 
         static void Main(string[] args)
         {
-            temp();
-            //Init();
-            //DoWork();
+            Init();
+            DoWork();
 
-            //Console.WriteLine("end");
+            Console.WriteLine("end");
 
-            //string line = "";
-            //while((line = Console.ReadLine()) != null)
-            //{
-            //    DealWord(line);
-            //}
+            string line = "";
+            while ((line = Console.ReadLine()) != null)
+            {
+                DealWord(line);
+            }
         }
 
         /// <summary>

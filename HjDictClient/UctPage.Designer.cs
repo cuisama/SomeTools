@@ -44,7 +44,7 @@
             this.BtnStart.BackColor = System.Drawing.SystemColors.Window;
             this.BtnStart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnStart.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnStart.Location = new System.Drawing.Point(19, 10);
+            this.BtnStart.Location = new System.Drawing.Point(16, 3);
             this.BtnStart.Name = "BtnStart";
             this.BtnStart.Size = new System.Drawing.Size(47, 20);
             this.BtnStart.TabIndex = 2;
@@ -57,7 +57,7 @@
             this.BtnLast.BackColor = System.Drawing.SystemColors.Window;
             this.BtnLast.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnLast.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnLast.Location = new System.Drawing.Point(72, 10);
+            this.BtnLast.Location = new System.Drawing.Point(69, 3);
             this.BtnLast.Name = "BtnLast";
             this.BtnLast.Size = new System.Drawing.Size(59, 20);
             this.BtnLast.TabIndex = 3;
@@ -70,7 +70,7 @@
             this.BtnNext.BackColor = System.Drawing.SystemColors.Window;
             this.BtnNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnNext.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnNext.Location = new System.Drawing.Point(251, 10);
+            this.BtnNext.Location = new System.Drawing.Point(248, 3);
             this.BtnNext.Name = "BtnNext";
             this.BtnNext.Size = new System.Drawing.Size(59, 20);
             this.BtnNext.TabIndex = 4;
@@ -83,7 +83,7 @@
             this.BtnEnd.BackColor = System.Drawing.SystemColors.Window;
             this.BtnEnd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnEnd.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnEnd.Location = new System.Drawing.Point(316, 10);
+            this.BtnEnd.Location = new System.Drawing.Point(313, 3);
             this.BtnEnd.Name = "BtnEnd";
             this.BtnEnd.Size = new System.Drawing.Size(47, 20);
             this.BtnEnd.TabIndex = 5;
@@ -96,7 +96,7 @@
             this.Btn1.BackColor = System.Drawing.SystemColors.Window;
             this.Btn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Btn1.Location = new System.Drawing.Point(137, 10);
+            this.Btn1.Location = new System.Drawing.Point(134, 3);
             this.Btn1.Name = "Btn1";
             this.Btn1.Size = new System.Drawing.Size(32, 20);
             this.Btn1.TabIndex = 6;
@@ -109,7 +109,7 @@
             this.Btn2.BackColor = System.Drawing.SystemColors.Window;
             this.Btn2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Btn2.Location = new System.Drawing.Point(175, 10);
+            this.Btn2.Location = new System.Drawing.Point(172, 3);
             this.Btn2.Name = "Btn2";
             this.Btn2.Size = new System.Drawing.Size(32, 20);
             this.Btn2.TabIndex = 7;
@@ -121,7 +121,7 @@
             this.Btn3.BackColor = System.Drawing.SystemColors.Window;
             this.Btn3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Btn3.Location = new System.Drawing.Point(213, 10);
+            this.Btn3.Location = new System.Drawing.Point(210, 3);
             this.Btn3.Name = "Btn3";
             this.Btn3.Size = new System.Drawing.Size(32, 20);
             this.Btn3.TabIndex = 8;
@@ -138,15 +138,16 @@
             "20",
             "50",
             "100"});
-            this.ComPrePageCount.Location = new System.Drawing.Point(381, 10);
+            this.ComPrePageCount.Location = new System.Drawing.Point(378, 3);
             this.ComPrePageCount.Name = "ComPrePageCount";
             this.ComPrePageCount.Size = new System.Drawing.Size(53, 20);
             this.ComPrePageCount.TabIndex = 10;
+            this.ComPrePageCount.Text = "20";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(436, 15);
+            this.label1.Location = new System.Drawing.Point(433, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 12);
             this.label1.TabIndex = 11;
@@ -166,7 +167,7 @@
             this.Controls.Add(this.BtnLast);
             this.Controls.Add(this.BtnStart);
             this.Name = "UctPage";
-            this.Size = new System.Drawing.Size(509, 41);
+            this.Size = new System.Drawing.Size(494, 30);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -21,13 +21,18 @@ namespace HjDictClient
         private int PageCount = 1;//一共有多少页
         public int CurPageNum = 1;//当前页码
 
+        public UctPage()
+        {
+            InitializeComponent();
+        }
+
         public UctPage(int zCount)
         {
             InitializeComponent();
             Init(zCount);
         }
 
-        private void Init(int zCount)
+        public void Init(int zCount)
         {
             Count = zCount;
             PrePageCount = 20;//int.Parse(ComPrePageCount.Text);
@@ -101,6 +106,7 @@ namespace HjDictClient
 
         private void Btn1_Click(object sender, EventArgs e)
         {
+            if (Btn1.Text.Equals("*")) return;
             GoPage(int.Parse(Btn1.Text));
             CurPageNum = int.Parse(Btn1.Text);
             UpPageCode();
@@ -108,6 +114,7 @@ namespace HjDictClient
 
         private void Btn3_Click(object sender, EventArgs e)
         {
+            if (Btn3.Text.Equals("*")) return;
             GoPage(int.Parse(Btn3.Text));
             CurPageNum = int.Parse(Btn3.Text);
             UpPageCode();

@@ -1,5 +1,5 @@
-﻿--USE ENTSVR;
-USE CTest;
+﻿USE ENTSVR;
+--USE CTest;
 GO
 --DROP TABLE [dbo].[WORD_EN]
 --GO

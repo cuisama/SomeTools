@@ -28,13 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.PALWords = new System.Windows.Forms.Panel();
+            this.UctPage = new HjDictClient.UctPage();
             this.SuspendLayout();
+            // 
+            // PALWords
+            // 
+            this.PALWords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PALWords.AutoScroll = true;
+            this.PALWords.Location = new System.Drawing.Point(12, 12);
+            this.PALWords.Name = "PALWords";
+            this.PALWords.Size = new System.Drawing.Size(495, 552);
+            this.PALWords.TabIndex = 0;
+            // 
+            // UctPage
+            // 
+            this.UctPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.UctPage.Location = new System.Drawing.Point(13, 570);
+            this.UctPage.Name = "UctPage";
+            this.UctPage.Size = new System.Drawing.Size(494, 30);
+            this.UctPage.TabIndex = 0;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 262);
+            this.ClientSize = new System.Drawing.Size(519, 612);
+            this.Controls.Add(this.UctPage);
+            this.Controls.Add(this.PALWords);
             this.Name = "Main";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -42,6 +65,9 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel PALWords;
+        private UctPage UctPage;
     }
 }
 
