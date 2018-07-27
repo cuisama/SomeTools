@@ -31,6 +31,7 @@ namespace HjDict
 
         private static void Init()
         {
+            Console.OutputEncoding = Encoding.Unicode;
             if (File.Exists(Para.LOG_PATH))
             {
                 //File.Delete(Para.LOG_PATH);
@@ -54,9 +55,17 @@ namespace HjDict
             Console.WriteLine("end");
 
             string line = "";
+            Word[] words = null;
             while ((line = Console.ReadLine()) != null)
             {
-                DealWord(line);
+                words = DealWord(line);
+                if (words != null)
+                {
+                    foreach (Word w in words)
+                    {
+                        Console.WriteLine(w.ToString());
+                    }
+                }
             }
         }
 
@@ -114,7 +123,7 @@ namespace HjDict
             StreamReader sr = new StreamReader(wordsFile);
 
             string line = "";
-            
+
             while((line = sr.ReadLine()) != null)
             {
                 DealWord(line);
@@ -128,7 +137,7 @@ namespace HjDict
         /// 处理一个词汇
         /// </summary>
         /// <param name="line"></param>
-        private static void DealWord(string line)
+        private static Word[] DealWord(string line)
         {
             line = line.Trim();
 
@@ -166,10 +175,11 @@ namespace HjDict
                     WriteWord(word);
                 }
                 Console.WriteLine("");
+
+                return words;
             }
 
-
-            
+            return null;
         }
 
         /// <summary>

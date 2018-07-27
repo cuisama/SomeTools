@@ -33,10 +33,10 @@
             this.BtnNext = new System.Windows.Forms.Button();
             this.BtnEnd = new System.Windows.Forms.Button();
             this.Btn1 = new System.Windows.Forms.Button();
-            this.Btn2 = new System.Windows.Forms.Button();
             this.Btn3 = new System.Windows.Forms.Button();
             this.ComPrePageCount = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.Tex2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // BtnStart
@@ -104,18 +104,6 @@
             this.Btn1.UseVisualStyleBackColor = false;
             this.Btn1.Click += new System.EventHandler(this.Btn1_Click);
             // 
-            // Btn2
-            // 
-            this.Btn2.BackColor = System.Drawing.SystemColors.Window;
-            this.Btn2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Btn2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Btn2.Location = new System.Drawing.Point(172, 3);
-            this.Btn2.Name = "Btn2";
-            this.Btn2.Size = new System.Drawing.Size(32, 20);
-            this.Btn2.TabIndex = 7;
-            this.Btn2.Text = "2";
-            this.Btn2.UseVisualStyleBackColor = false;
-            // 
             // Btn3
             // 
             this.Btn3.BackColor = System.Drawing.SystemColors.Window;
@@ -133,6 +121,7 @@
             // 
             this.ComPrePageCount.FormattingEnabled = true;
             this.ComPrePageCount.Items.AddRange(new object[] {
+            "1",
             "5",
             "10",
             "20",
@@ -143,6 +132,7 @@
             this.ComPrePageCount.Size = new System.Drawing.Size(53, 20);
             this.ComPrePageCount.TabIndex = 10;
             this.ComPrePageCount.Text = "20";
+            this.ComPrePageCount.SelectedIndexChanged += new System.EventHandler(this.ComPrePageCount_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -153,14 +143,27 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "/页";
             // 
+            // Tex2
+            // 
+            this.Tex2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Tex2.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Tex2.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.Tex2.Location = new System.Drawing.Point(172, 4);
+            this.Tex2.Name = "Tex2";
+            this.Tex2.Size = new System.Drawing.Size(32, 19);
+            this.Tex2.TabIndex = 12;
+            this.Tex2.Text = "2";
+            this.Tex2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Tex2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tex2_KeyPress);
+            // 
             // UctPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Tex2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ComPrePageCount);
             this.Controls.Add(this.Btn3);
-            this.Controls.Add(this.Btn2);
             this.Controls.Add(this.Btn1);
             this.Controls.Add(this.BtnEnd);
             this.Controls.Add(this.BtnNext);
@@ -180,9 +183,9 @@
         private System.Windows.Forms.Button BtnNext;
         private System.Windows.Forms.Button BtnEnd;
         private System.Windows.Forms.Button Btn1;
-        private System.Windows.Forms.Button Btn2;
         private System.Windows.Forms.Button Btn3;
         private System.Windows.Forms.ComboBox ComPrePageCount;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox Tex2;
     }
 }

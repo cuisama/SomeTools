@@ -35,9 +35,10 @@ namespace HjDictClient
         public void Init(int zCount)
         {
             Count = zCount;
-            PrePageCount = 20;//int.Parse(ComPrePageCount.Text);
+            PrePageCount = int.Parse(ComPrePageCount.Text);
             PageCount = zCount / PrePageCount + ((zCount % PrePageCount) == 0 ? 0 : 1);
             CurPageNum = 1;
+            GoPage(1);
             UpPageCode();
         }
 
@@ -45,9 +46,9 @@ namespace HjDictClient
         {
             int x = (CurPageNum / 2) + ((CurPageNum % 2) == 0 ? 0 : 1);
             Btn1.Text = x == CurPageNum ? "*" : x.ToString();
-            Btn2.Text = CurPageNum.ToString();
+            Tex2.Text = CurPageNum.ToString();
             x = CurPageNum + ((PageCount - CurPageNum) / 2) + (((PageCount - CurPageNum) % 2) == 0 ? 0 : 1);
-            Btn3.Text = x == CurPageNum ? "*" : x.ToString();
+            Btn3.Text = (x == CurPageNum || x > PageCount) ? "*" : x.ToString();
         }
 
         /// <summary>
@@ -118,6 +119,30 @@ namespace HjDictClient
             GoPage(int.Parse(Btn3.Text));
             CurPageNum = int.Parse(Btn3.Text);
             UpPageCode();
+        }
+
+        private void ComPrePageCount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Init(Count);
+        }
+
+        private void Tex2_KeyUp(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void Tex2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                e.Handled = true;
+                int num = 0;
+                bool isNum = int.TryParse(Tex2.Text, out num);
+                if (!isNum || num > PageCount || num < 1 || num == CurPageNum) return;
+                GoPage(num);
+                CurPageNum = num;
+                UpPageCode();
+            }
         }
     }
 }

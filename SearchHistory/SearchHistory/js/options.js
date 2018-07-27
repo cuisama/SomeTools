@@ -46,7 +46,7 @@ function setSelect() {
     searchHistory[today] = searchHistory[today] || {};
 
     for (var key in searchHistory) {
-        html = "<option value ='" + key + "'>" + key + "</option>" + html;
+        html = "<option value ='" + key + "'>" + key + " [" + new Date(key).getDay() + "]</option>" + html;
     }
     html = "<option value ='All'>" + bg.RM("all") + "</option>" + html;
     var mySelect = document.getElementById("selector");

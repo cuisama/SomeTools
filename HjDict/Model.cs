@@ -65,6 +65,7 @@ namespace HjDict
 
         public override string ToString()
         {
+
             return string.Format("{0}\t{1}\t{2}\t{3}", Value, Pronounces, Sample,
                 Phrase.Replace("\n", " ").Replace("源自:《新世纪英汉大词典》Collins外研社", ""));
         }

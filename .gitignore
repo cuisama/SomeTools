@@ -242,3 +242,5 @@ ModelManifest.xml
 .fake/
 /CompUse
 **/*.temp
+words.en.txt_*
+words.jp.txt_*
