@@ -49,6 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbManager.cs" />
+    <Compile Include="Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog.Designer.cs">
+      <DependentUpon>Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extension.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,11 +65,20 @@
     <Compile Include="Para.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search\Log.cs" />
+    <Compile Include="Search\Model.cs" />
+    <Compile Include="Search\Engine.cs" />
     <Compile Include="Setting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Suspension.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Suspension.Designer.cs">
+      <DependentUpon>Suspension.cs</DependentUpon>
     </Compile>
     <Compile Include="UctPage.cs">
       <SubType>UserControl</SubType>
@@ -77,6 +93,9 @@
       <DependentUpon>UctWordEn.cs</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
+    <EmbeddedResource Include="Dialog.resx">
+      <DependentUpon>Dialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +110,9 @@
     </Compile>
     <EmbeddedResource Include="Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Suspension.resx">
+      <DependentUpon>Suspension.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UctPage.resx">
       <DependentUpon>UctPage.cs</DependentUpon>
@@ -107,8 +129,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="WORD_EN.csv" />
-    <None Include="WORD_JP.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

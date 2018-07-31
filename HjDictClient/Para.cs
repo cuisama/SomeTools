@@ -28,6 +28,6 @@ namespace HjDictClient
 
         public static List<string> ValueEn = new List<string>() { "Value", "PronouncesUs", "Sample", "Phrase" };
         public static List<string> ValueJp = new List<string>() { "Value", "Pronounces", "Sample" };
-
+        public static float CardFontSize = 9;
     }
 }

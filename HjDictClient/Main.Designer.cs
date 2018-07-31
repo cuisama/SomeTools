@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.PALWords = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.另存为ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据格式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,25 +40,27 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIReloadDB = new System.Windows.Forms.ToolStripMenuItem();
             this.视图ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.英文展示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.单词ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.美式发音ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.英式发音ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.简明释义ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.详细释义ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.相关短语ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.英英释义ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.同反义词ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.词性变化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.日文展示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TexSearch = new System.Windows.Forms.TextBox();
-            this.BtnSearch = new System.Windows.Forms.Button();
-            this.UctPage = new HjDictClient.UctPage();
             this.版权ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIOptions = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.TexSearch = new System.Windows.Forms.TextBox();
+            this.BtnSearch = new System.Windows.Forms.Button();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.TSSBtnTomoto = new System.Windows.Forms.ToolStripSplitButton();
+            this.TSMITomotoReset = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSSLblTomotoTimer = new System.Windows.Forms.ToolStripStatusLabel();
+            this.TSSLblTomotoTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.CTMSNotifyIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TSMIExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIShowSuspension = new System.Windows.Forms.ToolStripMenuItem();
+            this.UctPage = new HjDictClient.UctPage();
+            this.menuStrip.SuspendLayout();
+            this.statusStrip.SuspendLayout();
+            this.CTMSNotifyIcon.SuspendLayout();
             this.SuspendLayout();
             // 
             // PALWords
@@ -68,21 +71,21 @@
             this.PALWords.AutoScroll = true;
             this.PALWords.Location = new System.Drawing.Point(12, 52);
             this.PALWords.Name = "PALWords";
-            this.PALWords.Size = new System.Drawing.Size(495, 511);
+            this.PALWords.Size = new System.Drawing.Size(495, 498);
             this.PALWords.TabIndex = 0;
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
             this.编辑ToolStripMenuItem,
             this.视图ToolStripMenuItem,
             this.帮助ToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(519, 26);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(519, 26);
+            this.menuStrip.TabIndex = 1;
+            this.menuStrip.Text = "menuStrip1";
             // 
             // 文件ToolStripMenuItem
             // 
@@ -135,111 +138,26 @@
             // 
             // 编辑ToolStripMenuItem
             // 
+            this.编辑ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMIReloadDB});
             this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
             this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.编辑ToolStripMenuItem.Text = "编辑";
             // 
+            // TSMIReloadDB
+            // 
+            this.TSMIReloadDB.Name = "TSMIReloadDB";
+            this.TSMIReloadDB.Size = new System.Drawing.Size(136, 22);
+            this.TSMIReloadDB.Text = "重载数据库";
+            this.TSMIReloadDB.Click += new System.EventHandler(this.TSMIReloadDB_Click);
+            // 
             // 视图ToolStripMenuItem
             // 
             this.视图ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.英文展示ToolStripMenuItem,
-            this.日文展示ToolStripMenuItem});
+            this.TSMIShowSuspension});
             this.视图ToolStripMenuItem.Name = "视图ToolStripMenuItem";
             this.视图ToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.视图ToolStripMenuItem.Text = "视图";
-            // 
-            // 英文展示ToolStripMenuItem
-            // 
-            this.英文展示ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.单词ToolStripMenuItem,
-            this.美式发音ToolStripMenuItem,
-            this.英式发音ToolStripMenuItem,
-            this.简明释义ToolStripMenuItem,
-            this.详细释义ToolStripMenuItem,
-            this.相关短语ToolStripMenuItem,
-            this.英英释义ToolStripMenuItem,
-            this.同反义词ToolStripMenuItem,
-            this.词性变化ToolStripMenuItem});
-            this.英文展示ToolStripMenuItem.Name = "英文展示ToolStripMenuItem";
-            this.英文展示ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.英文展示ToolStripMenuItem.Text = "英文展示";
-            // 
-            // 单词ToolStripMenuItem
-            // 
-            this.单词ToolStripMenuItem.Checked = true;
-            this.单词ToolStripMenuItem.CheckOnClick = true;
-            this.单词ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.单词ToolStripMenuItem.Name = "单词ToolStripMenuItem";
-            this.单词ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.单词ToolStripMenuItem.Text = "词汇展示";
-            // 
-            // 美式发音ToolStripMenuItem
-            // 
-            this.美式发音ToolStripMenuItem.Checked = true;
-            this.美式发音ToolStripMenuItem.CheckOnClick = true;
-            this.美式发音ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.美式发音ToolStripMenuItem.Name = "美式发音ToolStripMenuItem";
-            this.美式发音ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.美式发音ToolStripMenuItem.Text = "美式发音";
-            // 
-            // 英式发音ToolStripMenuItem
-            // 
-            this.英式发音ToolStripMenuItem.CheckOnClick = true;
-            this.英式发音ToolStripMenuItem.Name = "英式发音ToolStripMenuItem";
-            this.英式发音ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.英式发音ToolStripMenuItem.Text = "英式发音";
-            // 
-            // 简明释义ToolStripMenuItem
-            // 
-            this.简明释义ToolStripMenuItem.Checked = true;
-            this.简明释义ToolStripMenuItem.CheckOnClick = true;
-            this.简明释义ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.简明释义ToolStripMenuItem.Name = "简明释义ToolStripMenuItem";
-            this.简明释义ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.简明释义ToolStripMenuItem.Text = "简明释义";
-            // 
-            // 详细释义ToolStripMenuItem
-            // 
-            this.详细释义ToolStripMenuItem.CheckOnClick = true;
-            this.详细释义ToolStripMenuItem.Name = "详细释义ToolStripMenuItem";
-            this.详细释义ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.详细释义ToolStripMenuItem.Text = "详细释义";
-            // 
-            // 相关短语ToolStripMenuItem
-            // 
-            this.相关短语ToolStripMenuItem.Checked = true;
-            this.相关短语ToolStripMenuItem.CheckOnClick = true;
-            this.相关短语ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.相关短语ToolStripMenuItem.Name = "相关短语ToolStripMenuItem";
-            this.相关短语ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.相关短语ToolStripMenuItem.Text = "常用短语";
-            // 
-            // 英英释义ToolStripMenuItem
-            // 
-            this.英英释义ToolStripMenuItem.CheckOnClick = true;
-            this.英英释义ToolStripMenuItem.Name = "英英释义ToolStripMenuItem";
-            this.英英释义ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.英英释义ToolStripMenuItem.Text = "英英释义";
-            // 
-            // 同反义词ToolStripMenuItem
-            // 
-            this.同反义词ToolStripMenuItem.CheckOnClick = true;
-            this.同反义词ToolStripMenuItem.Name = "同反义词ToolStripMenuItem";
-            this.同反义词ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.同反义词ToolStripMenuItem.Text = "同反义词";
-            // 
-            // 词性变化ToolStripMenuItem
-            // 
-            this.词性变化ToolStripMenuItem.CheckOnClick = true;
-            this.词性变化ToolStripMenuItem.Name = "词性变化ToolStripMenuItem";
-            this.词性变化ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.词性变化ToolStripMenuItem.Text = "词性变化";
-            // 
-            // 日文展示ToolStripMenuItem
-            // 
-            this.日文展示ToolStripMenuItem.Name = "日文展示ToolStripMenuItem";
-            this.日文展示ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.日文展示ToolStripMenuItem.Text = "日文展示";
             // 
             // 帮助ToolStripMenuItem
             // 
@@ -250,8 +168,22 @@
             this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.帮助ToolStripMenuItem.Text = "帮助";
             // 
+            // 版权ToolStripMenuItem
+            // 
+            this.版权ToolStripMenuItem.Name = "版权ToolStripMenuItem";
+            this.版权ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.版权ToolStripMenuItem.Text = "版权";
+            // 
+            // TSMIOptions
+            // 
+            this.TSMIOptions.Name = "TSMIOptions";
+            this.TSMIOptions.Size = new System.Drawing.Size(100, 22);
+            this.TSMIOptions.Text = "选项";
+            this.TSMIOptions.Click += new System.EventHandler(this.TSMIOptions_Click);
+            // 
             // TexSearch
             // 
+            this.TexSearch.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.TexSearch.Location = new System.Drawing.Point(66, 29);
             this.TexSearch.Name = "TexSearch";
             this.TexSearch.Size = new System.Drawing.Size(327, 19);
@@ -271,42 +203,112 @@
             this.BtnSearch.UseVisualStyleBackColor = false;
             this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSSBtnTomoto,
+            this.TSSLblTomotoTimer,
+            this.TSSLblTomotoTime});
+            this.statusStrip.Location = new System.Drawing.Point(0, 596);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(519, 23);
+            this.statusStrip.TabIndex = 5;
+            this.statusStrip.Text = "statusStrip";
+            // 
+            // TSSBtnTomoto
+            // 
+            this.TSSBtnTomoto.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TSSBtnTomoto.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMITomotoReset});
+            this.TSSBtnTomoto.Image = ((System.Drawing.Image)(resources.GetObject("TSSBtnTomoto.Image")));
+            this.TSSBtnTomoto.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TSSBtnTomoto.Name = "TSSBtnTomoto";
+            this.TSSBtnTomoto.Size = new System.Drawing.Size(32, 21);
+            this.TSSBtnTomoto.Text = "TSSBtnTomoto";
+            this.TSSBtnTomoto.ButtonClick += new System.EventHandler(this.TSSBtnTomoto_ButtonClick);
+            // 
+            // TSMITomotoReset
+            // 
+            this.TSMITomotoReset.Name = "TSMITomotoReset";
+            this.TSMITomotoReset.Size = new System.Drawing.Size(100, 22);
+            this.TSMITomotoReset.Text = "重置";
+            this.TSMITomotoReset.Click += new System.EventHandler(this.TSMITomotoReset_Click);
+            // 
+            // TSSLblTomotoTimer
+            // 
+            this.TSSLblTomotoTimer.Name = "TSSLblTomotoTimer";
+            this.TSSLblTomotoTimer.Size = new System.Drawing.Size(41, 18);
+            this.TSSLblTomotoTimer.Text = "30:00";
+            // 
+            // TSSLblTomotoTime
+            // 
+            this.TSSLblTomotoTime.Name = "TSSLblTomotoTime";
+            this.TSSLblTomotoTime.Size = new System.Drawing.Size(15, 18);
+            this.TSSLblTomotoTime.Text = "0";
+            // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // notifyIcon
+            // 
+            this.notifyIcon.ContextMenuStrip = this.CTMSNotifyIcon;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "沪江小D";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.Click += new System.EventHandler(this.notifyIcon_Click);
+            // 
+            // CTMSNotifyIcon
+            // 
+            this.CTMSNotifyIcon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMIExit});
+            this.CTMSNotifyIcon.Name = "CTMSNotifyIcon";
+            this.CTMSNotifyIcon.Size = new System.Drawing.Size(101, 26);
+            // 
+            // TSMIExit
+            // 
+            this.TSMIExit.Name = "TSMIExit";
+            this.TSMIExit.Size = new System.Drawing.Size(100, 22);
+            this.TSMIExit.Text = "退出";
+            this.TSMIExit.Click += new System.EventHandler(this.TSMIExit_Click);
+            // 
+            // TSMIShowSuspension
+            // 
+            this.TSMIShowSuspension.Name = "TSMIShowSuspension";
+            this.TSMIShowSuspension.Size = new System.Drawing.Size(152, 22);
+            this.TSMIShowSuspension.Text = "显示悬浮窗";
+            this.TSMIShowSuspension.Click += new System.EventHandler(this.TSMIShowSuspension_Click);
+            // 
             // UctPage
             // 
             this.UctPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.UctPage.Location = new System.Drawing.Point(13, 570);
+            this.UctPage.Location = new System.Drawing.Point(13, 559);
             this.UctPage.Name = "UctPage";
             this.UctPage.Size = new System.Drawing.Size(494, 30);
             this.UctPage.TabIndex = 0;
-            // 
-            // 版权ToolStripMenuItem
-            // 
-            this.版权ToolStripMenuItem.Name = "版权ToolStripMenuItem";
-            this.版权ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.版权ToolStripMenuItem.Text = "版权";
-            // 
-            // TSMIOptions
-            // 
-            this.TSMIOptions.Name = "TSMIOptions";
-            this.TSMIOptions.Size = new System.Drawing.Size(152, 22);
-            this.TSMIOptions.Text = "选项";
-            this.TSMIOptions.Click += new System.EventHandler(this.TSMIOptions_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 612);
+            this.ClientSize = new System.Drawing.Size(519, 619);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.TexSearch);
             this.Controls.Add(this.UctPage);
             this.Controls.Add(this.PALWords);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.Text = "沪江小D";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
+            this.CTMSNotifyIcon.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,21 +318,10 @@
 
         private System.Windows.Forms.Panel PALWords;
         private UctPage UctPage;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 编辑ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 视图ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 英文展示ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 单词ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 美式发音ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 英式发音ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 简明释义ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 详细释义ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 相关短语ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 英英释义ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 同反义词ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 词性变化ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 日文展示ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 另存为ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据格式ToolStripMenuItem;
@@ -342,6 +333,17 @@
         private System.Windows.Forms.Button BtnSearch;
         private System.Windows.Forms.ToolStripMenuItem 版权ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TSMIOptions;
+        private System.Windows.Forms.ToolStripMenuItem TSMIReloadDB;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripSplitButton TSSBtnTomoto;
+        private System.Windows.Forms.ToolStripStatusLabel TSSLblTomotoTimer;
+        private System.Windows.Forms.ToolStripStatusLabel TSSLblTomotoTime;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.ToolStripMenuItem TSMITomotoReset;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip CTMSNotifyIcon;
+        private System.Windows.Forms.ToolStripMenuItem TSMIExit;
+        private System.Windows.Forms.ToolStripMenuItem TSMIShowSuspension;
     }
 }
 

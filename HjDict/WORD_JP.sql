@@ -11,6 +11,7 @@ CREATE TABLE [dbo].[WORD_JP](
 	Synant [nvarchar](1000) NULL,
 	AudioUrl [nvarchar](100) NULL,
 	Audio [varbinary](max) NULL,
+	Mark [numeric](4,0) NULL,
 	UpdateCount [numeric](4, 0) NOT NULL,
 	UpdateTime [datetime] NOT NULL,
  CONSTRAINT [PK_WORD_JP] PRIMARY KEY CLUSTERED 

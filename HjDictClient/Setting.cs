@@ -61,8 +61,10 @@ namespace HjDictClient
                     Para.ValueJp.Add(VALUE_JP[i]);
                 }
             }
+            //2.
+            Para.CardFontSize = int.Parse(ComFontSize.Text);
 
-
+            
         }
 
         /// <summary>
@@ -74,6 +76,8 @@ namespace HjDictClient
         {
             BtnApply_Click(null, null);
             this.Close();
+            
         }
+
     }
 }
