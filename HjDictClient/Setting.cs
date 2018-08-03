@@ -13,8 +13,8 @@ namespace HjDictClient
     public partial class Setting : Form
     { 
 
-        private static string[] VALUE_EN = new string[] { "Value", "PronouncesUs", "PronouncesEn", "Sample", "Phrase", "Detail", "DetailEnEn", "Synant", "Inflections" };
-        private static string[] VALUE_JP = new string[] { "Value", "Pronounces", "Sample", "Phrase", "Detail", "Synant" };
+        public static string[] VALUE_EN = new string[] { "Value", "PronouncesUs", "PronouncesEn", "Sample", "Phrase", "Detail", "DetailEnEn", "Synant", "Inflections" };
+        public static string[] VALUE_JP = new string[] { "Value", "Pronounces", "Sample", "Phrase", "Detail", "Synant" };
 
         public Setting()
         {

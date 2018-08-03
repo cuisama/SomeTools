@@ -15,6 +15,16 @@ namespace HjDictClient
         public Dialog()
         {
             InitializeComponent();
+            this.Select();
         }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
     }
 }

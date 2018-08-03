@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bcp.bat" />
     <Compile Include="DbManager.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Model.cs" />
@@ -58,6 +59,7 @@
     <Content Include="WORD_EN.sql">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="WORD_EN.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

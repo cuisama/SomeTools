@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HjDictClient
 {
@@ -226,6 +227,14 @@ namespace HjDictClient
                 drs[i]["RowNum"] = i + 1;
             } 
             return drs;
+        }
+
+
+        public static void Wink(this Control con, bool flag)
+        {
+            Type conType = con.GetType();
+            PropertyInfo pi = conType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(con, !flag, null);
         }
 
         /// <summary>

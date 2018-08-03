@@ -13,6 +13,9 @@ namespace HjDictClient
     public partial class Main : Form
     {
         private Control.ControlCollection Container = null;
+        public static DataTable dt = null;
+        private static bool TomotoTimer = false;
+
         public Main()
         {
             InitializeComponent();
@@ -49,8 +52,6 @@ namespace HjDictClient
             UctPage.Init(dt.Rows.Count);
 
         }
-        private DataTable dt = null;
-
 
         private void GoPage(int index)
         {
@@ -170,11 +171,11 @@ namespace HjDictClient
                 TomotoTimer = false;
                 TSSLblTomotoTimer.Text = "30:00";
                 TSSLblTomotoTime.Text = int.Parse(TSSLblTomotoTime.Text) + 1 + "";
-                MessageBox.Show("已完成一个番茄钟");
+                MessageBox.Show(string.Format("您{0}完成了一个番茄钟", int.Parse(TSSLblTomotoTime.Text) >= 2 ? "又" : "已"));
             }
         }
 
-        private static bool TomotoTimer = false;
+
 
         /// <summary>
         /// 开始番茄钟
@@ -267,5 +268,6 @@ namespace HjDictClient
                 suspension.Show();
             }
         }
+
     }
 }

@@ -13,6 +13,7 @@
         /// <param name="disposing">マネージ リソースを破棄する場合は true を指定し、その他の場合は false を指定します。</param>
         protected override void Dispose(bool disposing)
         {
+            notifyIcon.Visible = false;
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -30,7 +31,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.PALWords = new System.Windows.Forms.Panel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.另存为ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +42,7 @@
             this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIReloadDB = new System.Windows.Forms.ToolStripMenuItem();
             this.视图ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIShowSuspension = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.版权ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIOptions = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,23 +57,12 @@
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.CTMSNotifyIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TSMIExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIShowSuspension = new System.Windows.Forms.ToolStripMenuItem();
+            this.PALWords = new HjDictClient.UctPanel();
             this.UctPage = new HjDictClient.UctPage();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.CTMSNotifyIcon.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // PALWords
-            // 
-            this.PALWords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PALWords.AutoScroll = true;
-            this.PALWords.Location = new System.Drawing.Point(12, 52);
-            this.PALWords.Name = "PALWords";
-            this.PALWords.Size = new System.Drawing.Size(495, 498);
-            this.PALWords.TabIndex = 0;
             // 
             // menuStrip
             // 
@@ -159,6 +149,13 @@
             this.视图ToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.视图ToolStripMenuItem.Text = "视图";
             // 
+            // TSMIShowSuspension
+            // 
+            this.TSMIShowSuspension.Name = "TSMIShowSuspension";
+            this.TSMIShowSuspension.Size = new System.Drawing.Size(136, 22);
+            this.TSMIShowSuspension.Text = "显示悬浮窗";
+            this.TSMIShowSuspension.Click += new System.EventHandler(this.TSMIShowSuspension_Click);
+            // 
             // 帮助ToolStripMenuItem
             // 
             this.帮助ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -209,7 +206,7 @@
             this.TSSBtnTomoto,
             this.TSSLblTomotoTimer,
             this.TSSLblTomotoTime});
-            this.statusStrip.Location = new System.Drawing.Point(0, 596);
+            this.statusStrip.Location = new System.Drawing.Point(0, 391);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(519, 23);
             this.statusStrip.TabIndex = 5;
@@ -273,17 +270,21 @@
             this.TSMIExit.Text = "退出";
             this.TSMIExit.Click += new System.EventHandler(this.TSMIExit_Click);
             // 
-            // TSMIShowSuspension
+            // PALWords
             // 
-            this.TSMIShowSuspension.Name = "TSMIShowSuspension";
-            this.TSMIShowSuspension.Size = new System.Drawing.Size(152, 22);
-            this.TSMIShowSuspension.Text = "显示悬浮窗";
-            this.TSMIShowSuspension.Click += new System.EventHandler(this.TSMIShowSuspension_Click);
+            this.PALWords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PALWords.AutoScroll = true;
+            this.PALWords.Location = new System.Drawing.Point(13, 54);
+            this.PALWords.Name = "PALWords";
+            this.PALWords.Size = new System.Drawing.Size(494, 294);
+            this.PALWords.TabIndex = 6;
             // 
             // UctPage
             // 
             this.UctPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.UctPage.Location = new System.Drawing.Point(13, 559);
+            this.UctPage.Location = new System.Drawing.Point(13, 354);
             this.UctPage.Name = "UctPage";
             this.UctPage.Size = new System.Drawing.Size(494, 30);
             this.UctPage.TabIndex = 0;
@@ -292,12 +293,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 619);
+            this.ClientSize = new System.Drawing.Size(519, 414);
+            this.Controls.Add(this.PALWords);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.TexSearch);
             this.Controls.Add(this.UctPage);
-            this.Controls.Add(this.PALWords);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
@@ -315,8 +316,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel PALWords;
         private UctPage UctPage;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
@@ -344,6 +343,7 @@
         private System.Windows.Forms.ContextMenuStrip CTMSNotifyIcon;
         private System.Windows.Forms.ToolStripMenuItem TSMIExit;
         private System.Windows.Forms.ToolStripMenuItem TSMIShowSuspension;
+        private UctPanel PALWords;
     }
 }
 

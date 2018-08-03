@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace HjDictClient
 {
-    class Engine
+    static class Engine
     {
         private static string EN_DICT = "https://dict.hjenglish.com/w/{0}";
         private static string JP_DICT = "https://dict.hjenglish.com/jp/jc/{0}";
@@ -133,9 +133,9 @@ namespace HjDictClient
         /// 处理一个词汇
         /// </summary>
         /// <param name="line"></param>
-        public static Word[] DealWord(string line)
+        public static Word[] DealWord(object o)
         {
-            line = line.Trim();
+            string line = o.ToString().Trim();
 
             Regex wordRegex = new Regex(".+");
             if (DICT.Equals(EN_DICT))

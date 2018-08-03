@@ -28,26 +28,9 @@ namespace HjDictClient
             if (e.KeyChar == '\r')
             {
                 e.Handled = true;
-
                 string text = TexSearch.Text.Trim();
-
-                Dialog dialog = new Dialog();
-
-                int startLocationY = 0;
-                UctWordEn card = null;
-
                 Word[] words = Engine.DealWord(text);
-                DataRow[] dr = words.ToDataRow();
-
-                for (int i = 0; i < dr.Length; i++)
-                {
-                    card = new UctWordEn(dr[i]);
-                    card.Location = new Point(0, startLocationY);
-                    card.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
-                    startLocationY += card.Height;
-                    dialog.Controls.Add(card);
-                }
-                dialog.Show();
+                Util.ShowWordDialog(words);
             }
         }
 
@@ -128,7 +111,8 @@ namespace HjDictClient
             this.Cursor = Cursors.Default;
             int x = MousePosition.X;
             int y = MousePosition.Y;
-            if (!(x > Location.X && y > Location.Y && x < (Location.X + Width) && y < (Location.Y + Height)))
+            if (!(x > Location.X && y > Location.Y && x < (Location.X + Width) && y < (Location.Y + Height))
+                && (this.Location.X + this.Width >= Screen.GetWorkingArea(this).Width))
             {
                 this.Width = 10;
                 this.Location = new Point(Screen.GetWorkingArea(this).Width - this.Width, this.Location.Y);

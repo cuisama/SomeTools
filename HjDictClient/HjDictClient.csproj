@@ -86,6 +86,9 @@
     <Compile Include="UctPage.Designer.cs">
       <DependentUpon>UctPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="UctPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UctWordEn.cs">
       <SubType>UserControl</SubType>
     </Compile>
