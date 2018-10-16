@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReAVName", "ReAVName\ReAVName.csproj", "{FFB8C42D-5AC7-4DF7-B202-FDA8F10AF89E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchHistory", "SearchHistory\SearchHistory.csproj", "{C52242E2-FAC4-49C1-BF78-DF1ED7FFE24E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromeExpansion", "ChromeExpansion\ChromeExpansion.csproj", "{C52242E2-FAC4-49C1-BF78-DF1ED7FFE24E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HjDict", "HjDict\HjDict.csproj", "{6C9F8775-0B69-4E39-9DE1-D6A481DFF1F7}"
 EndProject

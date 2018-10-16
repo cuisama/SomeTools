@@ -7,8 +7,8 @@
     <ProjectGuid>{C52242E2-FAC4-49C1-BF78-DF1ED7FFE24E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SearchHistory</RootNamespace>
-    <AssemblyName>SearchHistory</AssemblyName>
+    <RootNamespace>ChromeExpansion</RootNamespace>
+    <AssemblyName>ChromeExpansion</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,9 +43,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bookmarks\background.html" />
+    <Content Include="Bookmarks\changelog.txt" />
     <Content Include="Bookmarks\css\button.css" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Bookmarks\icons\bookmark_manager.png" />
+    <Content Include="Bookmarks\icons\folder-win.png" />
+    <Content Include="Bookmarks\icons\folder.png" />
+    <Content Include="Bookmarks\icons\html.png" />
+    <Content Include="Bookmarks\icons\icon-128.png" />
+    <Content Include="Bookmarks\icons\icon-16.png" />
+    <Content Include="Bookmarks\icons\icon-24.png" />
+    <Content Include="Bookmarks\icons\icon-32.png" />
+    <Content Include="Bookmarks\icons\icon-48.png" />
+    <Content Include="Bookmarks\icons\icon_delete.png" />
+    <Content Include="Bookmarks\icons\js.png" />
+    <Content Include="Bookmarks\icons\refresh.png" />
+    <Content Include="Bookmarks\icons\reorder.png" />
+    <Content Include="Bookmarks\icons\tab-new.png" />
+    <Content Include="Bookmarks\icons\window-incognito.png" />
+    <Content Include="Bookmarks\icons\window-new.png" />
+    <Content Include="Bookmarks\js\background.js" />
+    <Content Include="Bookmarks\js\common.js" />
+    <Content Include="Bookmarks\js\localstorage.js" />
+    <Content Include="Bookmarks\js\options.js" />
+    <Content Include="Bookmarks\js\popup.js" />
+    <Content Include="Bookmarks\options.html" />
+    <Content Include="Bookmarks\popup.html" />
     <Content Include="SearchHistory\css\1960.css" />
     <Content Include="SearchHistory\css\1440.css" />
     <Content Include="SearchHistory\css\1024.css" />
@@ -54,6 +79,11 @@
     <None Include="App.config" />
     <Content Include="SearchHistory\css\common.css" />
     <Content Include="Bookmarks\css\popup.css" />
+    <None Include="Bookmarks\manifest.json" />
+    <None Include="Bookmarks\_locales\en\messages.json" />
+    <None Include="Bookmarks\_locales\fr\messages.json" />
+    <None Include="Bookmarks\_locales\ko\messages.json" />
+    <None Include="Bookmarks\_locales\ru\messages.json" />
     <None Include="SearchHistory\manifest.json" />
     <None Include="SearchHistory\_locales\en\messages.json" />
     <None Include="SearchHistory\_locales\ja\messages.json" />
@@ -70,10 +100,7 @@
     <Content Include="SearchHistory\options.html" />
     <Content Include="SearchHistory\popup.html" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Bookmarks\icons\" />
-    <Folder Include="Bookmarks\js\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
