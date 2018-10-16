@@ -1,0 +1,218 @@
+{
+   "addBookmark": {
+      "message": "Добавить страницу в закладки"
+   },
+   "btnAdd": {
+      "message": "Готово"
+   },
+   "btnCancel": {
+      "message": "Отменить"
+   },
+   "btnDonate": {
+      "message": "Отправить через PayPal"
+   },
+   "changelog": {
+      "message": "Посмотреть историю изменений"
+   },
+   "donateHeader": {
+      "message": "Я рад, что Вы используете это расширение.\u003Cbr/>Если оно Вам очень нравится, то Вы можете меня проспонсировать.\u003Cbr/>Спасибо!"
+   },
+   "empty": {
+      "message": "пусто"
+   },
+   "extDescription": {
+      "message": "Показывает меню закладок. Работает с закладками Chrome и Google."
+   },
+   "extTitle": {
+      "message": "Закладки"
+   },
+   "extTitleGoogle": {
+      "message": "Закладки Google"
+   },
+   "failedRetrieveGBookmakrs": {
+      "message": "Не удалось загрузить закладки Google"
+   },
+   "lblLabel": {
+      "message": "Метка:"
+   },
+   "lblTitle": {
+      "message": "Название:"
+   },
+   "lblURL": {
+      "message": "Ссылка:"
+   },
+   "loadingIndicator": {
+      "message": "Загрузка..."
+   },
+   "mainHeader": {
+      "message": "Настройки 'Bookmarks Menu'"
+   },
+   "needAllowIncognito": {
+      "message": "Вам необходимо разрешить расширению 'Bookmarks menu' работать в анонимном режиме! Вы можете сделать это на странице расширений."
+   },
+   "openAllBookmarks": {
+      "message": "Открыть все закладки"
+   },
+   "openAllBookmarksInIncognitoWindow": {
+      "message": "Открыть все закладки в режиме инкогнито"
+   },
+   "openAllBookmarksInNewWindow": {
+      "message": "Открыть все закладки в новом окне"
+   },
+   "openAllInTabs": {
+      "message": "Открыть всё во вкладках"
+   },
+   "openBookmarkManager": {
+      "message": "Диспетчер закладок"
+   },
+   "openInIncognitoWindow": {
+      "message": "Открыть в режиме инкогнито"
+   },
+   "openInNewTab": {
+      "message": "Открыть в новой вкладке"
+   },
+   "openInNewWindow": {
+      "message": "Открыть в новом окне"
+   },
+   "reloadGBookmarks": {
+      "message": "Перезагрузить закладки Google"
+   },
+   "remove": {
+      "message": "Удалить"
+   },
+   "reorder": {
+      "message": "Упорядочить по заголовкам"
+   },
+   "tabBookmarks": {
+      "message": "Закладки"
+   },
+   "tabMouse": {
+      "message": "Мышь"
+   },
+   "tabWindow": {
+      "message": "Настройки интерфейса"
+   },
+   "tbLabelSeparator": {
+      "message": "Разделитель меток:"
+   },
+   "tbSelectAllBookmarks": {
+      "message": "Выбрать все закладки"
+   },
+   "tbSelectBookmarks": {
+      "message": "Выберите закладки, которые нужно показывать"
+   },
+   "tbSelectFaviconService": {
+      "message": "Выберите сервис для получения иконок:"
+   },
+   "tbUseChrome": {
+      "message": "Использовать закладки Chrome"
+   },
+   "tbUseGoogle": {
+      "message": "Использовать закладки Google"
+   },
+   "tmLeftBtn": {
+      "message": "Левая кнопка"
+   },
+   "tmMiddleBtn": {
+      "message": "Средняя кнопка"
+   },
+   "tmMouseConfig": {
+      "message": "Настройка жестов мыши"
+   },
+   "tmOpenInCurTab": {
+      "message": "Открыть в текущей вкладке"
+   },
+   "tmOpenInNewTab": {
+      "message": "Открыть в новой вкладке"
+   },
+   "tmRightBtn": {
+      "message": "Правая кнопка"
+   },
+   "tmShowContextMenu": {
+      "message": "Показать контекстное меню"
+   },
+   "tmSwitchToNewTab": {
+      "message": "Переключаться на открываемую вкладку"
+   },
+   "twActiveBmBgClr": {
+      "message": "Цвет фона подсвеченной закладки (градиент):"
+   },
+   "twActiveBmBgClrFrom": {
+      "message": "от:"
+   },
+   "twActiveBmBgClrTo": {
+      "message": "до:"
+   },
+   "twActiveBmFntClr": {
+      "message": "Цвет текста подсвеченной закладки:"
+   },
+   "twBmBgColor": {
+      "message": "Цвет фона закладки:"
+   },
+   "twBodyColor": {
+      "message": "Цвет фона окна:"
+   },
+   "twColorScheme": {
+      "message": "Настройка цветов"
+   },
+   "twContextMenu": {
+      "message": "Настройки контекстного меню"
+   },
+   "twDisabledItemFntClr": {
+      "message": "Цвет текста запрещённых элементов меню:"
+   },
+   "twFaviconSize": {
+      "message": "Ширина и высота иконок:"
+   },
+   "twFont": {
+      "message": "Шрифт:"
+   },
+   "twFontColor": {
+      "message": "Цвет текста:"
+   },
+   "twFontSize": {
+      "message": "Размер шрифта:"
+   },
+   "twHideCMModeSwitcher": {
+      "message": "Скрыть пункт 'Использовать закладки Chrome/Google'"
+   },
+   "twHideCMOpenIncognito": {
+      "message": "Скрыть пункт 'Открыть в режиме инкогнито'"
+   },
+   "twMaxBookmarkWidth": {
+      "message": "Максмальная ширина закладок:"
+   },
+   "twMaxBookmarkWidthCM": {
+      "message": "сантиметров"
+   },
+   "twMaxBookmarkWidthEM": {
+      "message": "символов 'm'"
+   },
+   "twMaxBookmarkWidthIN": {
+      "message": "дюймов"
+   },
+   "twMaxBookmarkWidthMM": {
+      "message": "милиметров"
+   },
+   "twMaxBookmarkWidthPX": {
+      "message": "пикселей"
+   },
+   "twMenuConfig": {
+      "message": "Настройка меню закладок"
+   },
+   "twMesurePX": {
+      "message": "пикс"
+   },
+   "twRestoreDflt": {
+      "message": "Восстановить значения по умолчанию"
+   },
+   "twScrollBarWidth": {
+      "message": "Ширина полосы прокрутки:"
+   },
+   "twShowTooltip": {
+      "message": "Показывать всплывающую подсказку для длинных названий"
+   },
+   "twShowURL": {
+      "message": "Показывать всплывающую подсказку c адресом закладки"
+   }
+}

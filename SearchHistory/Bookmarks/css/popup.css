@@ -1,0 +1,134 @@
+﻿body {
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+img {
+    margin-right: 0.3em;
+    vertical-align: bottom;
+}
+
+li {
+    position: relative;
+}
+
+li ul {
+    display: none;
+    position: absolute;
+    top: -1px;
+    right: 100%;
+}
+
+span {
+    display: block;
+    cursor: default;
+    padding: 3px 1em 3px 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+ul {
+    border: 1px solid #ccc;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#contextMenu > li:not(.enabled) img {
+    opacity: 0.5;
+}
+
+.empty {
+    padding: 3px 0.6em;
+}
+
+.hover > ul {
+    display: block;
+}
+
+.separator {
+    background-color: #ccc;
+    height: 1px;
+    margin: 1px 3px;
+}
+
+#bookmarksMenu {
+    float: right;
+}
+
+#contextMenu {
+    display: none;
+    border-width: 1px 2px 2px 1px;
+    border-style: outset;
+    border-color: #6f5e5e;
+    position: absolute;
+    z-index: 2;
+}
+
+#contextMenu.forChromeBookmarks > .forGoogleBookmarks,
+#contextMenu.forGoogleBookmarks > .forChromeBookmarks,
+#contextMenu[for="bookmark"] > .forFolder,
+#contextMenu[for="folder"] > .forBookmark {
+    display: none;
+}
+
+#gwindow {
+    border-width: 1px 2px 2px 1px;
+    border-style: outset;
+    border-color: #6f5e5e;
+    border-radius: 3px;
+    display: none;
+    position: fixed;
+    z-index: 2;
+}
+
+#gwindow input {
+    width: 20em;
+}
+
+#gwindow tr > td:first-child {
+    text-align: right;
+}
+
+#loading {
+    display: none;
+    margin: 2ex 0.3em;
+    text-align: center;
+}
+
+#suggest {
+    background-color: white;
+    border: 1px solid gray;
+    cursor: default;
+    display: none;
+    position: fixed;
+    z-index: 2;
+    overflow: auto;
+}
+
+#suggest > .currentSuggest {
+    background-color: #86abd9;
+}
+
+#transparentLayer {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+::-webkit-scrollbar {
+    background-color: #e2dbdb;
+    border: 1px solid #ccc;
+    width: 7px; /* will be replaced in initBookmarksMenu */
+    height: 0;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    background-image: -webkit-gradient(linear, left top, right top, from(#ccc), to(gray));
+}

@@ -1,0 +1,24 @@
+{
+   "background": {
+      "page": "background.html"
+   },
+   "browser_action": {
+      "default_icon": "icons/icon-24.png",
+      "default_popup": "popup.html"
+   },
+   "default_locale": "en",
+   "description": "__MSG_extDescription__",
+   "icons": {
+      "128": "icons/icon-128.png",
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFTOeLhHmIkBoT987p28XK0px2aiPfRdcu3m34eFG6zx5SaOIjEBGc4Xpi5xSSIg6vvhi8xEa0JJe4cc7AXHA4hN7GBJZiqrsyWfH80BkO0HMTu4CE2meq7aG3rjzCE72d2en+KOo2AoHb97bZigx+wzUILJCgI37jRZEzu0xFcwIDAQAB",
+   "manifest_version": 2,
+   "name": "Bookmarks Menu",
+   "options_page": "options.html",
+   "permissions": [ "bookmarks", "chrome://favicon/", "fontSettings", "http://*/*", "https://*/*", "tabs" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "3.4.15"
+}

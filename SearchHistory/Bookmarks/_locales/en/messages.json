@@ -1,0 +1,218 @@
+{
+   "addBookmark": {
+      "message": "Bookmark This Page"
+   },
+   "btnAdd": {
+      "message": "Ok"
+   },
+   "btnCancel": {
+      "message": "Cancel"
+   },
+   "btnDonate": {
+      "message": "Send via PayPal"
+   },
+   "changelog": {
+      "message": "View changelog"
+   },
+   "donateHeader": {
+      "message": "I'm glad that you use this extension.\u003Cbr/>If you like it very much, you can sponsor me.\u003Cbr/>Thank you!"
+   },
+   "empty": {
+      "message": "empty"
+   },
+   "extDescription": {
+      "message": "Shows bookmarks menu. Works with Chrome and Google bookmarks."
+   },
+   "extTitle": {
+      "message": "Bookmarks"
+   },
+   "extTitleGoogle": {
+      "message": "Google Bookmarks"
+   },
+   "failedRetrieveGBookmakrs": {
+      "message": "Failed to retrieve Google Bookmarks"
+   },
+   "lblLabel": {
+      "message": "Label:"
+   },
+   "lblTitle": {
+      "message": "Title:"
+   },
+   "lblURL": {
+      "message": "URL:"
+   },
+   "loadingIndicator": {
+      "message": "Loading..."
+   },
+   "mainHeader": {
+      "message": "'Bookmarks Menu' settings"
+   },
+   "needAllowIncognito": {
+      "message": "You need to allow 'Bookmarks menu' to run in incognito! You can do it on extensions page."
+   },
+   "openAllBookmarks": {
+      "message": "Open All Bookmarks"
+   },
+   "openAllBookmarksInIncognitoWindow": {
+      "message": "Open All Bookmarks in Incognito Window"
+   },
+   "openAllBookmarksInNewWindow": {
+      "message": "Open All Bookmarks in New Window"
+   },
+   "openAllInTabs": {
+      "message": "Open All in Tabs"
+   },
+   "openBookmarkManager": {
+      "message": "Bookmark Manager"
+   },
+   "openInIncognitoWindow": {
+      "message": "Open in Incognito Window"
+   },
+   "openInNewTab": {
+      "message": "Open in New Tab"
+   },
+   "openInNewWindow": {
+      "message": "Open in New Window"
+   },
+   "reloadGBookmarks": {
+      "message": "Reload Google Bookmarks"
+   },
+   "remove": {
+      "message": "Delete"
+   },
+   "reorder": {
+      "message": "Reorder by Title"
+   },
+   "tabBookmarks": {
+      "message": "Bookmarks"
+   },
+   "tabMouse": {
+      "message": "Mouse"
+   },
+   "tabWindow": {
+      "message": "UI Settings"
+   },
+   "tbLabelSeparator": {
+      "message": "Label separator:"
+   },
+   "tbSelectAllBookmarks": {
+      "message": "Select/Deselect all bookmarks"
+   },
+   "tbSelectBookmarks": {
+      "message": "Select bookmarks you wish to display"
+   },
+   "tbSelectFaviconService": {
+      "message": "Select service to retrieve favicons:"
+   },
+   "tbUseChrome": {
+      "message": "Use Chrome bookmarks"
+   },
+   "tbUseGoogle": {
+      "message": "Use Google bookmarks"
+   },
+   "tmLeftBtn": {
+      "message": "Left button"
+   },
+   "tmMiddleBtn": {
+      "message": "Middle button"
+   },
+   "tmMouseConfig": {
+      "message": "Mouse configuration"
+   },
+   "tmOpenInCurTab": {
+      "message": "Open in current tab"
+   },
+   "tmOpenInNewTab": {
+      "message": "Open in new tab"
+   },
+   "tmRightBtn": {
+      "message": "Right button"
+   },
+   "tmShowContextMenu": {
+      "message": "Show context menu"
+   },
+   "tmSwitchToNewTab": {
+      "message": "When I open a bookmark in new tab, switch to it immediately"
+   },
+   "twActiveBmBgClr": {
+      "message": "Background color of highlighted bookmark:"
+   },
+   "twActiveBmBgClrFrom": {
+      "message": "gradient from:"
+   },
+   "twActiveBmBgClrTo": {
+      "message": "gradient to:"
+   },
+   "twActiveBmFntClr": {
+      "message": "Font color of highlighted bookmark:"
+   },
+   "twBmBgColor": {
+      "message": "Bookmark background color:"
+   },
+   "twBodyColor": {
+      "message": "Window background color:"
+   },
+   "twColorScheme": {
+      "message": "Color scheme"
+   },
+   "twContextMenu": {
+      "message": "Context menu settings"
+   },
+   "twDisabledItemFntClr": {
+      "message": "Font color of disabled menu item:"
+   },
+   "twFaviconSize": {
+      "message": "Favicon width and height:"
+   },
+   "twFont": {
+      "message": "Font:"
+   },
+   "twFontColor": {
+      "message": "Font color:"
+   },
+   "twFontSize": {
+      "message": "Font size:"
+   },
+   "twHideCMModeSwitcher": {
+      "message": "Hide menu item 'Use Chrome/Google bookmarks'"
+   },
+   "twHideCMOpenIncognito": {
+      "message": "Hide menu item 'Open in Incognito Window'"
+   },
+   "twMaxBookmarkWidth": {
+      "message": "Max width for bookmark:"
+   },
+   "twMaxBookmarkWidthCM": {
+      "message": "centimeters"
+   },
+   "twMaxBookmarkWidthEM": {
+      "message": "'m' symbols"
+   },
+   "twMaxBookmarkWidthIN": {
+      "message": "inches"
+   },
+   "twMaxBookmarkWidthMM": {
+      "message": "millimeters"
+   },
+   "twMaxBookmarkWidthPX": {
+      "message": "pixels"
+   },
+   "twMenuConfig": {
+      "message": "Bookmarks menu configuration"
+   },
+   "twMesurePX": {
+      "message": "px"
+   },
+   "twRestoreDflt": {
+      "message": "Restore default settings"
+   },
+   "twScrollBarWidth": {
+      "message": "Scrollbar width:"
+   },
+   "twShowTooltip": {
+      "message": "Show tooltip for long bookmark names"
+   },
+   "twShowURL": {
+      "message": "Show tooltip with bookmark location"
+   }
+}

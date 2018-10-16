@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bookmarks\css\button.css" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="SearchHistory\css\1960.css" />
@@ -52,6 +53,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <Content Include="SearchHistory\css\common.css" />
+    <Content Include="Bookmarks\css\popup.css" />
     <None Include="SearchHistory\manifest.json" />
     <None Include="SearchHistory\_locales\en\messages.json" />
     <None Include="SearchHistory\_locales\ja\messages.json" />
@@ -68,7 +70,10 @@
     <Content Include="SearchHistory\options.html" />
     <Content Include="SearchHistory\popup.html" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Bookmarks\icons\" />
+    <Folder Include="Bookmarks\js\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
