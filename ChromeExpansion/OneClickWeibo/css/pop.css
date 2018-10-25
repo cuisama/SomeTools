@@ -1,0 +1,59 @@
+@CHARSET "UTF-8";
+
+body{
+	font-size:14px;
+}
+
+a {
+  color: #0088cc;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #005580;
+  text-decoration: underline;
+}
+
+#nonuserDiv {
+	width:173px;
+}
+
+#userDiv{
+	width:190px;
+}
+
+#headRight{
+	text-align: right;
+}
+
+#avatar{
+	width: 50px;
+	float: left;
+}
+
+#nameArea{
+	margin-left:60px;
+}
+
+td.ifLabel{
+	font-size:10px;
+}
+
+td.ifValue{
+	font-weight:bold;
+	font-family:"Bookman Old Style"
+}
+
+#navArea table{
+	margin-left:20px;
+}
+
+#navArea table td{
+	padding:5px 2px 5px 2px;
+}
+
+#recommendArea{
+	margin-top:10px;
+	margin-left:5px;
+	font-size:14px;
+}

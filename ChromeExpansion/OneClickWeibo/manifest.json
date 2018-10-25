@@ -1,0 +1,26 @@
+{
+   "background": {
+      "page": "background.html"
+   },
+   "browser_action": {
+      "default_icon": "wb24.png",
+      "default_popup": "pop.html"
+   },
+   "content_scripts": [ {
+      "js": [ "js/jquery.js", "js/injected.js" ],
+      "matches": [ "http://wbonfly.applinzi.com/chrome.html*" ]
+   } ],
+   "content_security_policy": "script-src 'self'; object-src 'self'",
+   "description": "使用Chrome右键便捷发送微博的Chrome扩展",
+   "icons": {
+      "16": "wb16.png",
+      "24": "wb24.png",
+      "48": "wb48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4F9lahu1J40FJUS7/2bPkULgVA5o9TWZ+FGgfxHn98GIbyx4Tqe0PAtfNpxfWEHrFI9Q055A4KJo2YWco6c1ipEQ9uVOYBvZRPr4hsQNxpdsxiPIwlguooc2hX0u7NO1mbcHoY6tkw6m7LwQVimxaLKOK4T8RJU4GMT1n6RBhpwIDAQAB",
+   "manifest_version": 2,
+   "name": "一键微博",
+   "permissions": [ "tabs", "contextMenus", "\u003Call_urls>" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "3.0.0"
+}

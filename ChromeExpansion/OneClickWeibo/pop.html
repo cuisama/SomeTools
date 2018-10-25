@@ -1,0 +1,76 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <title>一键微博</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="css/pop.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script src="js/weibo.js"></script>
+    <script src="js/pop.js"></script>
+  </head>
+  <body>
+    <div id='content'>
+    	<div id="nonuserDiv">
+    		<a href="#" id="authButton">
+    			<img src="http://www.sinaimg.cn/blog/developer/wiki/32.png">
+    		</a>
+    	</div>
+    	<div id="userDiv">
+    		<div id="headRight">
+    			已授权,<a href="#" id="logout">退出</a>
+    		</div>
+    		<div>
+    			<div id="userArea">
+    				<div id="avatar">
+    					<img src="">
+    				</div>
+    				<div id="nameArea">
+    					<a id="userName" href="#"  class="clickLink">一键微博</a>
+    					<br>
+    					<span id="location">@北京 海淀</span>
+    					<br>
+    					<span id="desc">一键微博</span>
+    				</div>
+    			</div>
+    			<div id="infoList">
+    				<table>
+    					<tr>
+    						<td class="ifLabel">关注</td>
+    						<td class="ifLabel">粉丝</td>
+    						<td class="ifLabel">微博</td>
+    						<td class="ifLabel">收藏</td>
+    						<td class="ifLabel">天</td>
+    					</tr>
+    					<tr>
+    						<td id="ifFollow" class="ifValue">100</td>
+    						<td id="ifFans" class="ifValue">100</td>
+    						<td id="ifStatus" class="ifValue">100</td>
+    						<td id="ifFav" class="ifValue">100</td>
+    						<td id="ifDay" class="ifValue">100</td>
+    					</tr>
+    				</table>
+    			</div>
+    			<div id="navArea">
+    				<table>
+    					<tr>
+    						<td><a class="clickLink" href="http://weibo.com/at/weibo">@我的</a></td>
+    						<td><a class="clickLink" href="http://weibo.com/comment/inbox">我的评论</a></td>
+    					</tr>
+    					<tr>
+    						<td><a class="clickLink" href="http://weibo.com/messages">我的私信</a></td>
+    						<td><a class="clickLink" href="http://weibo.com/fav">我的收藏</a></td>
+    					</tr>
+    					<tr>
+    						<td><a class="clickLink" href="http://www.weibo.com/dzone">联系作者</a></td>
+    						<td><a class="clickLink" href="http://app.weibo.com">应用广场</a></td>
+    					</tr>
+    				</table>
+    			</div>
+    			<div id="recommendArea">
+    				<a href="#" id="recommendButton">点此向好友推荐“一键微博”</a>
+    			</div>
+    		</div>
+		</div>
+    </div>
+  </body>
+</html>
