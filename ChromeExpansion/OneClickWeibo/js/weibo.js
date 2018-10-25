@@ -109,8 +109,11 @@ Weibo.checkStatus = function(callback){
 };
 
 Weibo.share = function(pageUrl,title,srcUrl){
-	var url = "http://service.weibo.com/share/share.php?url=" + encodeURIComponent(pageUrl)
-		+"&title="+encodeURIComponent(title)
+	// var url = "http://service.weibo.com/share/share.php?url=" + encodeURIComponent(pageUrl)
+	// 	+"&title="+encodeURIComponent(title)
+	// 	+"&appkey=38950085";
+		var url = "http://service.weibo.com/share/share.php?"
+		+"title="+encodeURIComponent(title)
 		+"&appkey=38950085";
 		
 		if(srcUrl && srcUrl.indexOf("http") == 0){
