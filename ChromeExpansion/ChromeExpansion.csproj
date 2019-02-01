@@ -98,7 +98,10 @@
     <Content Include="MemoNote\css\common.css" />
     <Content Include="MemoNote\img\icon.png" />
     <Content Include="MemoNote\img\checkbox-1.png" />
-    <Content Include="MemoNote\img\checkbox0.png" />
+    <Content Include="MemoNote\img\checkbox-0.png" />
+    <Content Include="MemoNote\img\方框.png" />
+    <Content Include="MemoNote\img\选择-方框.png" />
+    <Content Include="MemoNote\js\background.js" />
     <Content Include="MemoNote\js\popup.js" />
     <Content Include="MemoNote\popup.html" />
     <Content Include="OneClickWeibo\background.html" />
@@ -136,7 +139,6 @@
     <None Include="MemoNote\_locales\en\messages.json" />
     <None Include="MemoNote\_locales\ja\messages.json" />
     <None Include="MemoNote\_locales\zh_CN\messages.json" />
-    <None Include="MemoNote\_locales\zh_TW\messages.json" />
     <None Include="OneClickWeibo\manifest.json" />
     <None Include="SearchHistory\manifest.json" />
     <None Include="SearchHistory\_locales\en\messages.json" />
