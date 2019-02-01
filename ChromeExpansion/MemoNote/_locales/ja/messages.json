@@ -1,0 +1,17 @@
+﻿{
+  "locale": {"message": "jp"},
+
+  "title": { "message": "メモメモ" },
+
+  "description": { "message": "それは4つの単語です：メモのメモ" },
+
+  "versionCode": { "message": "最新版を持っている" },
+
+  "add": { "message": "追加する" },
+
+  "pending": { "message": "保留中" },
+
+  "completed": { "message": "完了しました" },
+
+  "del": { "message": "削"}
+}

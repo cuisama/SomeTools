@@ -1,0 +1,18 @@
+﻿{
+  "locale": {"message": "zh"},
+
+  "title": { "message": "备忘便笺" },
+
+  "description": { "message": "就是四个字：备忘的便笺" },
+
+  "versionCode": { "message": "有最新的版本了" },
+
+  "add": { "message": "添加" },
+
+  "pending": { "message": "待处理" },
+
+  "completed": { "message": "已完成" },
+
+  "del": { "message": "删"}
+
+}

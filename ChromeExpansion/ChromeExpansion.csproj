@@ -92,6 +92,15 @@
     <Content Include="GoogleAccess\popup.js" />
     <Content Include="GoogleAccess\straightGoogle.js" />
     <Content Include="GoogleAccess\warming.html" />
+    <Content Include="MemoNote\css\1024.css" />
+    <Content Include="MemoNote\css\1440.css" />
+    <Content Include="MemoNote\css\1960.css" />
+    <Content Include="MemoNote\css\common.css" />
+    <Content Include="MemoNote\img\icon.png" />
+    <Content Include="MemoNote\img\checkbox-1.png" />
+    <Content Include="MemoNote\img\checkbox0.png" />
+    <Content Include="MemoNote\js\popup.js" />
+    <Content Include="MemoNote\popup.html" />
     <Content Include="OneClickWeibo\background.html" />
     <Content Include="OneClickWeibo\chrome.html" />
     <Content Include="OneClickWeibo\css\options.css" />
@@ -123,6 +132,11 @@
     <None Include="GoogleAccess\manifest.json" />
     <None Include="GoogleAccess\_locales\en\messages.json" />
     <None Include="GoogleAccess\_locales\zh_CN\messages.json" />
+    <None Include="MemoNote\manifest.json" />
+    <None Include="MemoNote\_locales\en\messages.json" />
+    <None Include="MemoNote\_locales\ja\messages.json" />
+    <None Include="MemoNote\_locales\zh_CN\messages.json" />
+    <None Include="MemoNote\_locales\zh_TW\messages.json" />
     <None Include="OneClickWeibo\manifest.json" />
     <None Include="SearchHistory\manifest.json" />
     <None Include="SearchHistory\_locales\en\messages.json" />

@@ -1,0 +1,13 @@
+﻿body{
+    font-size: 12px;
+}
+.btn a {
+    font-size: 14px; 
+}
+#popup{
+    width:400px;
+}
+#options{
+    width:880px;
+    height:400px;
+}

@@ -1,0 +1,17 @@
+﻿{
+  "locale": {"message": "en"},
+
+  "title": { "message": "Memo note" },
+
+  "description": { "message": "It’s four words: notes for memo" },
+
+  "versionCode": { "message": "Have the latest version" },
+
+  "add": { "message": "Add" },
+
+  "pending": { "message": "Pending" },
+
+  "completed": { "message": "Completed" },
+
+  "del": { "message": "del"}
+}

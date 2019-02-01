@@ -1,0 +1,107 @@
+﻿body{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 12px;
+    width:100%;
+}
+table
+{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    text-align: left;
+}
+table td, table th
+{
+    border: 1px solid #cad9ea;
+    color: #666;
+    height: 20px;
+    min-width:35px;
+}
+table thead th
+{
+    background-color: #CCE8EB;
+}
+table tr:nth-child(odd)
+{
+    background: #fff;
+}
+table tr:nth-child(even)
+{
+    background: #F5FAFA;
+}
+
+
+.btn a   
+{  
+    text-decoration:none;  
+    background:#3686f3;
+    color:#f2f2f2;  
+      
+    padding: 5px 30px 5px 30px;  
+    font-size:16px;   
+    font-weight:bold;  
+    border-radius:3px;  
+       
+    transition:all linear 0.30s;  
+      
+}  
+.btn a:hover { 
+    background:#385f9e; 
+}
+
+#tableDiv{
+    width:100%;
+}
+#tableDiv table{
+    width:100%;
+}
+
+@media screen and (max-width: 1960px) {
+    body{
+        font-size: 16px;
+    }
+    .btn a {
+        font-size: 21px; 
+    }
+    #options{
+        width:1680px;
+        height:600px;
+    }
+    #popup{
+        width:600px;
+    }
+
+}
+
+@media screen and (max-width: 1440px) {
+    body{
+        font-size: 14px;
+    }
+    .btn a {
+        font-size: 19px; 
+    }
+    #options{
+        width:1280px;
+        height:500px;
+    }
+    #popup{
+        width:500px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    body{
+        font-size: 12px;
+    }
+    .btn a {
+        font-size: 16px; 
+    }
+    #options{
+        width:880px;
+        height:400px;
+    }
+    #popup{
+        width:400px;
+    }
+}
